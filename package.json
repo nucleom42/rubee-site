@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "build": "node esbuild.config.js",
+    "watch": "node esbuild.config.js --watch",
+    "prepare": "npm install esbuild react react-dom react-router-dom esbuild-plugin-inline-css"
+  },
+  "dependencies": {
+    "esbuild": "^0.25.5",
+    "esbuild-plugin-inline-css": "^0.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.6.2"
+  }
+}

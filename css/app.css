@@ -1,0 +1,131 @@
+:root {
+  --bg: #fffbe6; /* Honey background */
+  --primary: #000000; /* Bee black */
+  --text: #222222;
+  --accent: #ffcc00; /* Bee yellow */
+  --feature-bg: #fff8c6; /* Lighter honey */
+  --border: #e0b800;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  background: var(--primary);
+  color: var(--accent);
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 4px solid var(--accent);
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin: 0 auto;
+  max-width: 600px;
+  color: var(--accent);
+}
+
+main {
+  padding: 3rem 2rem;
+  max-width: 960px;
+  margin: auto;
+  text-align: center;
+}
+
+main h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.feature {
+  background: var(--feature-bg);
+  border: 2px dashed var(--border);
+  border-radius: 4px;
+  padding: 1rem;
+  flex: 1 1 260px;
+  max-width: 280px;
+  box-shadow: 2px 2px 0 var(--border);
+}
+
+.feature h3 {
+  color: var(--primary);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.feature p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #555;
+  background: var(--accent);
+  border-top: 4px solid var(--primary);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+}
+
+.nav-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-group a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.nav-group a:hover {
+  text-decoration: underline;
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+.hero {
+  padding: 2rem 1rem;
+  text-align: center;
+}
