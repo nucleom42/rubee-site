@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.4.1'
 
-gem 'ru.Bee'
+gem 'ru.Bee', '1.9.6'
 gem 'sequel'
 gem 'sqlite3'
 gem 'rake'
