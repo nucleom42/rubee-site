@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '3.4.1'
+
 gem 'ru.Bee'
 gem 'sequel'
 gem 'sqlite3'
