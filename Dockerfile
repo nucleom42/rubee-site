@@ -14,9 +14,6 @@ RUN bundle install --redownload
 # Copy the rest of the application files into the container
 COPY . .
 
-# Ensure scripts are executable (after the files are copied)
-RUN chmod +x ./bin/rubee
-
 # Set the environment variable RACK_ENV to production
 ENV RACK_ENV=production
 
