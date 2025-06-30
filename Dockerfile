@@ -9,10 +9,8 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 
 # Copy Gemfile and Gemfile.lock, then install dependencies
 COPY Gemfile ./
-# Remove Gemfile.lock to make sure it's re-downloaded
-RUN rm Gemfile.lock
-# Install gems
-RUN bundle install --redownload
+# Remove Gemfile.lock to make sure it's re-downloaded and install dependencies
+RUN rm -f Gemfile.lock && bundle install --redownload
 
 # Copy the rest of the application files into the container
 COPY . .
