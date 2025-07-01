@@ -4,12 +4,17 @@ FROM docker.io/library/ruby:3.4.1
 # Set the working directory inside the container
 WORKDIR /app
 
-# Install system dependencies required for your app (e.g., build tools for gems like pg, etc.)
+# Install system dependencies + Node 20 via n
 RUN apt-get update -qq && apt-get install -y \
+  curl \
   build-essential \
   libpq-dev \
-  nodejs \
-  npm
+  python3 \
+  make \
+  g++ \
+  && curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s 20 \
+  && npm install -g npm
+
 
 # Copy the rest of the application files into the container
 COPY . .
@@ -31,7 +36,7 @@ RUN rubee db init
 RUN rubee db run:all
 
 # Expose the port the app will run on
-EXPOSE 8080
+EXPOSE 7000
 
 # Run the app (ensure this command correctly starts your app)
-CMD rubee start:8080
+CMD rubee start
