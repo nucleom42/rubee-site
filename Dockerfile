@@ -5,7 +5,11 @@ FROM docker.io/library/ruby:3.4.1
 WORKDIR /app
 
 # Install system dependencies required for your app (e.g., build tools for gems like pg, etc.)
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN apt-get update -qq && apt-get install -y \
+  build-essential \
+  libpq-dev \
+  nodejs \
+  npm
 
 # Copy the rest of the application files into the container
 COPY . .
