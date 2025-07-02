@@ -17,7 +17,7 @@ echo "Deploying new version to $NEW_NAME on port $NEW_PORT"
 # Build and start new container
 podman build -t rubee-app-image:new .
 podman rm -f $NEW_NAME 2>/dev/null
-podman run -d --name $NEW_NAME --restart=always -p $NEW_PORT:80 rubee-app-image:new
+podman run -d --name $NEW_NAME --restart=always -p 7000:$NEW_PORT rubee-app-image:new
 
 # Wait for boot
 echo "Waiting for app to be ready..."
