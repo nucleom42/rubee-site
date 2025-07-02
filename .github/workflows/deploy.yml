@@ -1,13 +1,12 @@
-- name: Deploy
+- name: Deploy to Raspberry Pi
   uses: appleboy/ssh-action@v1.0.3
   with:
-    host: ${{ secrets.HOST }}        # ✅ No slashes
-    username: ${{ secrets.USER }}                 # ✅ Your Pi's user
-    key: ${{ secrets.SSH_KEY }}  # ✅ Your GitHub secret
-    port: 22                       # ✅ Must be a valid number
+    host: ${{ secrets.HOST }}
+    username: ${{ secrets.USER }}
+    key: ${{ secrets.SSH_KEY }}
+    port: 22
     script: |
       cd ~/rubee
       git pull origin main
       chmod +x ./deploy.sh
       ./deploy.sh
-
