@@ -1,69 +1,41 @@
 #!/bin/bash
-set -euo pipefail
 
-# === CONFIG ===
-APP_NAME="rubee-app"
-INTERNAL_PORT=7000           # App port inside container
-PORT_A=7000                  # Live port A
-PORT_B=7001                  # Live port B
-CONTAINER_A="rubee-a"
-CONTAINER_B="rubee-b"
-TAG="rubee-app:$(date +%s)"
-
-log() {
-  echo "[$(date '+%H:%M:%S')] $*"
-}
-
-# === Determine active container and ports ===
-if podman ps --format '{{.Names}}' | grep -q "$CONTAINER_A"; then
-  CURRENT="$CONTAINER_A"
-  NEW="$CONTAINER_B"
-  CURRENT_PORT="$PORT_A"
-  NEW_PORT="$PORT_B"
+# Determine which container is active
+ACTIVE_PORT=$(grep -o '700[12]' /etc/nginx/sites-enabled/rubee)
+if [ "$ACTIVE_PORT" == "7001" ]; then
+  OLD_NAME="rubee-a"
+  NEW_NAME="rubee-b"
+  NEW_PORT="7002"
 else
-  CURRENT="$CONTAINER_B"
-  NEW="$CONTAINER_A"
-  CURRENT_PORT="$PORT_B"
-  NEW_PORT="$PORT_A"
+  OLD_NAME="rubee-b"
+  NEW_NAME="rubee-a"
+  NEW_PORT="7001"
 fi
 
-log "🔍 Current live container is $CURRENT on port $CURRENT_PORT"
-log "🆕 New container will be $NEW on port $NEW_PORT"
+echo "Deploying new version to $NEW_NAME on port $NEW_PORT"
 
-# === Build new image ===
-log "🚧 Building image $TAG..."
-podman build -t "$TAG" .
+# Build and start new container
+podman build -t rubee-app-image:new .
+podman rm -f $NEW_NAME 2>/dev/null
+podman run -d --name $NEW_NAME --restart=always -p $NEW_PORT:80 rubee-app-image:new
 
-# === Start new container on alternate port ===
-log "🚀 Starting new container $NEW on port $NEW_PORT..."
-podman run -d --rm \
-  --name "$NEW" \
-  -p "$NEW_PORT:$INTERNAL_PORT" \
-  "$TAG"
+# Wait for boot
+echo "Waiting for app to be ready..."
+sleep 5
 
-# === Wait for health check ===
-log "⏳ Waiting for new container to become healthy..."
-for i in {1..10}; do
-  if curl -s "http://localhost:$NEW_PORT" >/dev/null; then
-    log "✅ New container is healthy."
-    break
-  else
-    log "⏳ Still waiting..."
-    sleep 2
-  fi
-done
+# Health check
+if curl -f http://localhost:$NEW_PORT >/dev/null 2>&1; then
+  echo "App passed health check. Switching NGINX to port $NEW_PORT"
 
-# === Switch reverse proxy ===
-log "🔁 Switching Nginx to new port $NEW_PORT..."
-sed -i "s/localhost:$CURRENT_PORT/localhost:$NEW_PORT/" /etc/nginx/sites-enabled/rubee.conf
-nginx -s reload
+  sudo ln -sf /etc/nginx/sites-available/rubee-$NEW_PORT /etc/nginx/sites-enabled/rubee
+  sudo nginx -s reload
 
-# === Stop and remove old container ===
-log "🧹 Stopping old container $CURRENT..."
-podman stop "$CURRENT" || true
-podman rm "$CURRENT" || true
-
-log "🧼 Pruning unused images..."
-podman image prune -f
-
-log "✅ Deployment complete. Live on port $NEW_PORT via Nginx"
+  echo "Stopping old container $OLD_NAME"
+  podman stop $OLD_NAME
+  podman rm $OLD_NAME
+else
+  echo "Health check failed! Aborting deployment."
+  podman stop $NEW_NAME
+  podman rm $NEW_NAME
+  exit 1
+fi
