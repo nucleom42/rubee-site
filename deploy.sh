@@ -16,8 +16,15 @@ echo "Deploying new version to $NEW_NAME on port $NEW_PORT"
 
 # Build and start new container
 podman build -t rubee-app-image:new .
+
+# Tag the new image with a stable name to protect it
+podman tag rubee-app-image:new rubee-app-image:live
+
+# Remove container if already exists
 podman rm -f $NEW_NAME 2>/dev/null
-podman run -d --name $NEW_NAME --restart=always -p 7000:$NEW_PORT rubee-app-image:new
+
+# Run new container on dynamic external port, internal always 7000
+podman run -d --name $NEW_NAME --restart=always -p 7000:$NEW_PORT rubee-app-image:live
 
 # Wait for boot
 echo "Waiting for app to be ready..."
@@ -33,6 +40,13 @@ if curl -f http://localhost:$NEW_PORT >/dev/null 2>&1; then
   echo "Stopping old container $OLD_NAME"
   podman stop $OLD_NAME
   podman rm $OLD_NAME
+
+  echo "Pruning unused containers and dangling images..."
+  # Remove all exited containers except current
+  podman ps -a --format '{{.Names}}' | grep -vE "^($NEW_NAME|$OLD_NAME)$" | xargs -r podman rm -f
+
+  # Remove all images except live one
+  podman images --format '{{.Repository}}:{{.Tag}} {{.ID}}' | grep -v 'rubee-app-image:live' | awk '{print $2}' | xargs -r podman rmi -f
 else
   echo "Health check failed! Aborting deployment."
   podman stop $NEW_NAME
