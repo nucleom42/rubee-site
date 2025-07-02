@@ -1,26 +1,13 @@
-name: Deploy
-
-on:
-  push:
-    branches: [main]
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd ~/rubee
-            git pull origin main
-            chmod +x ./deploy.sh
-            ./deploy.sh
+- name: Deploy
+  uses: appleboy/ssh-action@v1.0.3
+  with:
+    host: ${{ secrets.HOST }}        # ✅ No slashes
+    username: ${{ secrets.USER }}                 # ✅ Your Pi's user
+    key: ${{ secrets.SSH_KEY }}  # ✅ Your GitHub secret
+    port: 22                       # ✅ Must be a valid number
+    script: |
+      cd ~/rubee
+      git pull origin main
+      chmod +x ./deploy.sh
+      ./deploy.sh
 
