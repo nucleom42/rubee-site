@@ -24,4 +24,5 @@ jobs:
             cd ~/rubee
             git pull origin main
             chmod +x ./deploy.sh
-            ./deploy.sh
+            nohup ./deploy.sh > deploy.log 2>&1 &
+

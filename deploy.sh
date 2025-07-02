@@ -3,30 +3,49 @@ set -euo pipefail
 
 # === CONFIG ===
 APP_NAME="rubee-app"
-LIVE_PORT=80                # Public port exposed on host
-INTERNAL_PORT=7000          # Port app listens to inside container
-TEMP_PORT=7001              # Temporary internal port for health check
-CONTAINER_LIVE="rubee-container"
-CONTAINER_TEMP="rubee-temp"
-TAG="rubee-app:$(date +%s)" # Unique image tag
+INTERNAL_PORT=7000           # App port inside container
+PORT_A=7000                  # Live port A
+PORT_B=7001                  # Live port B
+CONTAINER_A="rubee-a"
+CONTAINER_B="rubee-b"
+TAG="rubee-app:$(date +%s)"
 
 log() {
   echo "[$(date '+%H:%M:%S')] $*"
 }
 
-log "🚧 Building new image..."
+# === Determine active container and ports ===
+if podman ps --format '{{.Names}}' | grep -q "$CONTAINER_A"; then
+  CURRENT="$CONTAINER_A"
+  NEW="$CONTAINER_B"
+  CURRENT_PORT="$PORT_A"
+  NEW_PORT="$PORT_B"
+else
+  CURRENT="$CONTAINER_B"
+  NEW="$CONTAINER_A"
+  CURRENT_PORT="$PORT_B"
+  NEW_PORT="$PORT_A"
+fi
+
+log "🔍 Current live container is $CURRENT on port $CURRENT_PORT"
+log "🆕 New container will be $NEW on port $NEW_PORT"
+
+# === Build new image ===
+log "🚧 Building image $TAG..."
 podman build -t "$TAG" .
 
-log "🚀 Running temporary container on port $TEMP_PORT..."
+# === Start new container on alternate port ===
+log "🚀 Starting new container $NEW on port $NEW_PORT..."
 podman run -d --rm \
-  --name "$CONTAINER_TEMP" \
-  -p "$TEMP_PORT:$INTERNAL_PORT" \
+  --name "$NEW" \
+  -p "$NEW_PORT:$INTERNAL_PORT" \
   "$TAG"
 
-log "⏳ Waiting for temporary container to be healthy..."
+# === Wait for health check ===
+log "⏳ Waiting for new container to become healthy..."
 for i in {1..10}; do
-  if curl -s "http://localhost:$TEMP_PORT" >/dev/null; then
-    log "✅ Temporary container is healthy."
+  if curl -s "http://localhost:$NEW_PORT" >/dev/null; then
+    log "✅ New container is healthy."
     break
   else
     log "⏳ Still waiting..."
@@ -34,22 +53,17 @@ for i in {1..10}; do
   fi
 done
 
-log "🧹 Stopping and removing old container (if exists)..."
-podman stop "$CONTAINER_LIVE" 2>/dev/null || true
-podman rm "$CONTAINER_LIVE" 2>/dev/null || true
+# === Switch reverse proxy ===
+log "🔁 Switching Nginx to new port $NEW_PORT..."
+sed -i "s/localhost:$CURRENT_PORT/localhost:$NEW_PORT/" /etc/nginx/sites-enabled/rubee.conf
+nginx -s reload
 
-log "🔁 Starting new live container on port $LIVE_PORT..."
-podman run -d \
-  --restart=unless-stopped \
-  --name "$CONTAINER_LIVE" \
-  -p "$LIVE_PORT:$INTERNAL_PORT" \
-  "$TAG"
+# === Stop and remove old container ===
+log "🧹 Stopping old container $CURRENT..."
+podman stop "$CURRENT" || true
+podman rm "$CURRENT" || true
 
-log "🧼 Cleaning up temporary container..."
-podman stop "$CONTAINER_TEMP" 2>/dev/null || true
-podman rm "$CONTAINER_TEMP" 2>/dev/null || true
-
-log "🧹 Pruning unused images..."
+log "🧼 Pruning unused images..."
 podman image prune -f
 
-log "✅ Deployment complete. App is live at http://localhost:$LIVE_PORT"
+log "✅ Deployment complete. Live on port $NEW_PORT via Nginx"
