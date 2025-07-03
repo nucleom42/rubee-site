@@ -15,7 +15,7 @@ bundle install --redownload
 
 log "restarting rubee server"
 rubee stop || true
-rubee start
+rubee start > /dev/null 2>&1
 
 log "preparing rubee with react"
 rubee react prepare
