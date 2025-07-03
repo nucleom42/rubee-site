@@ -25,7 +25,7 @@ rubee db run:all
 echo "::group::Restarting Rubee Server"
 log "restarting rubee server"
 rubee stop
-nohup rubee start > /dev/null 2>&1 &
+rubee start > /dev/null 2>&1 &
 echo "::endgroup::"
 
 log "done"
