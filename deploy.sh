@@ -1,3 +1,4 @@
+
 #!/bin/bash
 set -e
 
@@ -11,18 +12,18 @@ log() {
 }
 
 log "bundler install --redownload"
-bundle install --redownload
+bundle install --redownload > /dev/null 2>&1
 
 log "preparing rubee with react"
-rubee react prepare
+rubee react prepare > /dev/null 2>&1
 
 log "migrations"
-rubee db run:all
+rubee db run:all > /dev/null 2>&1
 
+echo "::group::Restarting Rubee Server"
 log "restarting rubee server"
-echo "::group::Restart Rubee"
-rubee stop || true /dev/null
-rubee start > /dev/null
+rubee stop > /dev/null 2>&1 || true
+rubee start > /dev/null 2>&1
 echo "::endgroup::"
 
 log "done"
