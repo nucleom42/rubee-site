@@ -1,4 +1,3 @@
-
 #!/bin/bash
 set -e
 
@@ -28,4 +27,3 @@ nohup rubee start > /dev/null 2>&1 &
 echo "::endgroup::"
 
 log "done"
-
