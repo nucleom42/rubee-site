@@ -23,6 +23,6 @@ rubee db run:all
 
 log "restarting rubee server"
 rubee stop || true
-rubee start > /dev/null &
+rubee start > /dev/null 2>&1 &
 
 log "done"
