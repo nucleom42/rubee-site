@@ -21,14 +21,13 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            script: |
-  bash -l -c "
-    cd ~/app/rubee-site
-    git reset --hard HEAD
-    git clean -fd
-    git pull origin main
-    chmod +x ./deploy.sh
-    ./deploy.sh
-  "
+            bash -l -c "
+              cd ~/app/rubee-site
+              git reset --hard HEAD
+              git clean -fd
+              git pull origin main
+              chmod +x ./deploy.sh
+              ./deploy.sh
+            "
 
 
