@@ -12,18 +12,20 @@ log() {
 }
 
 log "bundler install --redownload"
-bundle install --redownload > /dev/null 2>&1
+bundle install --redownload
 
 log "preparing rubee with react"
-rubee react prepare > /dev/null 2>&1
+rubee react prepare
 
 log "migrations"
-rubee db run:all > /dev/null 2>&1
+rubee db run:all
+
 
 echo "::group::Restarting Rubee Server"
 log "restarting rubee server"
 rubee stop > /dev/null 2>&1 || true
-rubee start > /dev/null 2>&1 &
+nohup rubee start > /dev/null 2>&1 &
 echo "::endgroup::"
+
 log "done"
 
