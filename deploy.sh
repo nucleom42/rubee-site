@@ -22,9 +22,8 @@ log "migrations"
 rubee db run:all
 
 log "restarting rubee server"
-(
-  rubee stop > /dev/null 2>&1
-  rubee start > /dev/null 2>&1
-) &
+
+rubee stop > /dev/null 2>&1
+rubee start > /dev/null 2>&1 &
 
 log "done"
