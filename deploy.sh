@@ -10,6 +10,8 @@ log() {
   echo "[$(date '+%H:%M:%S')] $*"
 }
 
+sudo chown -R oleg:oleg ~/.rbenv
+
 log "bundler install --redownload"
 bundle install --redownload
 
