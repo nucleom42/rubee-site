@@ -1,14 +1,10 @@
 Rubee::Router.draw do |router|
-  router.get('/admin/login', to: 'user_admins#edit',
-                             model: {
-                               name: 'user_admin',
-                               attributes: [
-                                 { name: :id, type: :primary },
-                                 { name: :email, type: :string },
-                                 { name: :password, type: :string },
-                               ],
-                             },
-                             namespace: :admin)
+  # Login page
+  router.get('/login', to: 'users#edit', namespace: :admin)
+  router.post('/admin/users/login', to: 'users#login', namespace: :admin)
+  router.post('/admin/users/logout', to: 'users#logout', namespace: :admin)
+
+  # Sections
   router.get('/admin/sections', to: 'sections#index',
              namespace: :admin, model: { name: 'section', attributes: [
                { name: :id, type: :primary },
@@ -16,6 +12,7 @@ Rubee::Router.draw do |router|
                { name: :description, type: :text },
              ] })
 
+  # Documents
   router.get('/admin/documents', to: 'documents#index',
              namespace: :admin, model: { name: 'document', attributes: [
                { name: :id, type: :primary },

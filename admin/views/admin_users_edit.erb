@@ -1,0 +1,15 @@
+<div class="login-container">
+    <h2>Admin Login</h2>
+    <form action="/admin/users/login" method="POST">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+    <div class="note">Access restricted to authorized admins.</div>
+  </div>
