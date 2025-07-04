@@ -1,4 +1,3 @@
-
 #!/bin/bash
 set -e
 
@@ -11,6 +10,8 @@ log() {
   echo "[$(date '+%H:%M:%S')] $*"
 }
 
+sudo chown -R oleg:oleg ~/.rbenv
+
 log "bundler install --redownload"
 bundle install --redownload
 
@@ -20,12 +21,8 @@ rubee react prepare
 log "migrations"
 rubee db run:all
 
-
-echo "::group::Restarting Rubee Server"
 log "restarting rubee server"
-nohup rubee stop > /dev/null 2>&1 &
-nohup rubee start > /dev/null 2>&1 &
-echo "::endgroup::"
+rubee stop || true
+rubee start > /dev/null 2>&1 &
 
 log "done"
-
