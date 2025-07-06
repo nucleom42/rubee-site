@@ -1,0 +1,8 @@
+<div class="header">
+  <div class="user-info">
+    Logged in as <strong><%= locals[:name] %></strong>
+  </div>
+  <form action="/admin/users/logout" method="POST" class="logout-form">
+    <button type="submit" class="btn btn-secondary">Logout</button>
+  </form>
+</div>

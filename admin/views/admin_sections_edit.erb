@@ -1,0 +1,35 @@
+<div class="section-details">
+  <h1>Edit Section #<%= @section.id %></h1>
+
+  <form action="/admin/sections/<%= @section.id %>" method="post">
+    <input type="hidden" name="_method" value="put" />
+
+    <div class="detail">
+      <label for="title"><strong>Title:</strong></label>
+      <input
+        type="text"
+        name="section[title]"
+        id="title"
+        class="form-control"
+        value="<%= @section.title %>"
+        required
+      />
+    </div>
+
+    <div class="detail">
+      <label for="description"><strong>Description:</strong></label>
+      <input
+        type="text"
+        name="section[description]"
+        id="description"
+        class="form-control"
+        value="<%= @section.description %>"
+      />
+    </div>
+
+    <div class="actions">
+      <input type="submit" value="Save" class="btn btn-primary" />
+      <a href="/admin/sections/<%= @section.id %>" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>

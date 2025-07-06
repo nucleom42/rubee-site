@@ -1,1 +1,31 @@
-<h1>admin_sections_index View</h1>
+<% render_template('admin_header', {name: "king"}, app_name: 'admin') %>
+<div class="sections-wrapper">
+  <div class="header">
+    <h1>Sections</h1>
+    <a href="<%= '/admin/sections/new' %>" class="btn btn-primary">+ New Section</a>
+  </div>
+
+  <table class="sections-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sections.each do |section| %>
+        <tr>
+          <td><%= section.id %></td>
+          <td><%= section.title %></td>
+          <td><%= section.description %></td>
+          <td>
+            <a href="<%= "/admin/sections/#{section.id}" %>" class="action-link">Show</a>
+            <a href="<%= "/admin/sections/#{section.id}/edit" %>" class="action-link">Edit</a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

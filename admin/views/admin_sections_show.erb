@@ -1,0 +1,23 @@
+<div class="section-details">
+  <h1>Section Details</h1>
+
+  <div class="detail">
+    <strong>ID:</strong>
+    <span><%= @section.id %></span>
+  </div>
+
+  <div class="detail">
+    <strong>Title:</strong>
+    <span><%= @section.title %></span>
+  </div>
+
+  <div class="detail">
+    <strong>Description:</strong>
+    <span><%= @section.description %></span>
+  </div>
+
+  <div class="actions">
+    <a href="<%= "/admin/sections/#{@section.id}/edit" %>" class="btn btn-primary">Edit</a>
+    <a href="<%= "/admin/sections" %>" class="btn btn-secondary">Back to Index</a>
+  </div>
+</div>

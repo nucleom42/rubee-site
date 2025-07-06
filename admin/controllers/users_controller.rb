@@ -1,6 +1,5 @@
 class Admin::UsersController < Rubee::BaseController
   include Rubee::AuthTokenable
-  auth_methods :index
 
   # GET /login (login form page)
   def edit

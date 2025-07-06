@@ -11,6 +11,12 @@ Rubee::Router.draw do |router|
                { name: :title, type: :string },
                { name: :description, type: :text },
              ] })
+  router.get('/admin/sections/new', to: 'sections#new', namespace: :admin)
+  router.post('/admin/sections', to: 'sections#create', namespace: :admin)
+  router.get('/admin/sections/{id}', to: 'sections#show', namespace: :admin)
+  router.get('/admin/sections/{id}/edit', to: 'sections#edit', namespace: :admin)
+  router.put('/admin/sections/{id}', to: 'sections#update', namespace: :admin)
+  router.delete('/admin/sections/{id}', to: 'sections#destroy', namespace: :admin)
 
   # Documents
   router.get('/admin/documents', to: 'documents#index',

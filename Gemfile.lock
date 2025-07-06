@@ -1,7 +1,7 @@
 PATH
   remote: ../rubee
   specs:
-    ru.Bee (1.9.8)
+    ru.Bee (1.9.10)
       bundler (~> 2.1, >= 2.1.4)
 
 GEM
