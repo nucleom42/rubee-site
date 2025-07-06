@@ -16,13 +16,13 @@ log "bundler install --redownload"
 bundle install --redownload
 
 log "preparing rubee with react"
-rubee react prepare
+RACK_ENV=production rubee react prepare
 
 log "migrations"
-rubee db run:all
+RACK_ENV=production rubee db run:all
 
 log "restarting rubee server"
 rubee stop || true
-rubee start > /dev/null 2>&1 &
+RACK_ENV=production rubee start > /dev/null 2>&1 &
 
 log "done"

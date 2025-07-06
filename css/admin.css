@@ -176,22 +176,22 @@ input[type="password"] {
   font-size: 16px;
 }
 
-/* .btn { */
-/*   display: inline-block; */
-/*   width: 100%; */
-/*   padding: 0.7rem; */
-/*   margin-top: 0.5rem; */
-/*   font-size: 16px; */
-/*   font-weight: bold; */
-/*   text-align: center; */
-/*   border: none; */
-/*   border-radius: 6px; */
-/*   cursor: pointer; */
-/* } */
+.btn {
+  display: inline-block;
+  padding: 0.7rem;
+  margin-top: 0.5rem;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
 .btn-login {
   background-color: #38bdf8; /* Sky-500 */
   color: white;
+  width: 100%;
 }
 
 .btn-login:hover {
@@ -201,6 +201,7 @@ input[type="password"] {
 .btn-logout {
   background-color: #f87171; /* Red-400 */
   color: white;
+  width: 100%;
 }
 
 .btn-logout:hover {
