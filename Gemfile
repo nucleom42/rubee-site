@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.4.1'
 
-gem 'ru.Bee', path: '../rubee'
+gem 'ru.Bee'
 gem 'sequel'
 gem 'sqlite3'
 gem 'rake'
