@@ -5,7 +5,8 @@ class Admin::SectionsController < Rubee::BaseController
   # GET /admin/sections
   def index
     @sections = Admin::Section.all
-    response_with
+    @user = authentificated_user
+    response_with(object: { user: @authentificated_user })
   end
 
   # GET /admin/sections/new

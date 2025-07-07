@@ -43,7 +43,7 @@ GEM
       ffi (~> 1.0)
     rerun (0.14.0)
       listen (~> 3.0)
-    ru.Bee (1.9.10)
+    ru.Bee (1.9.11)
       bundler (~> 2.1, >= 2.1.4)
     sequel (5.94.0)
       bigdecimal
@@ -90,4 +90,4 @@ RUBY VERSION
    ruby 3.4.1p0
 
 BUNDLED WITH
-   2.6.8
+   2.6.9

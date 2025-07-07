@@ -49,10 +49,14 @@ h1 {
 }
 
 .action-link {
-  margin-right: 10px;
-  color: #3490dc;
-  text-decoration: none;
-  font-weight: bold;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
 }
 
 .action-link:hover {
@@ -116,6 +120,11 @@ h1 {
   margin-right: 10px;
 }
 
+.inline {
+  display: inline-block;
+  margin-right: 10px;
+}
+
 .btn-primary {
   background-color: #3490dc;
   color: white;
@@ -174,6 +183,16 @@ input[type="password"] {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 16px;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  resize: vertical; /* allows vertical resize only */
+  min-height: 100px; /* optional: gives a default height */
 }
 
 .btn {

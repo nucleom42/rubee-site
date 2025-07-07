@@ -22,6 +22,6 @@ class Admin::UsersController < Rubee::BaseController
   def logout
     unauthentificate! # AuthTokenable method aimed to handle logout action.
     # Make sure @zeroed_token_header is paRssed within headers options
-    response_with(type: :redirect, to: "/users/login", headers: @zeroed_token_header)
+    response_with(type: :redirect, to: "/login", headers: @zeroed_token_header)
   end
 end

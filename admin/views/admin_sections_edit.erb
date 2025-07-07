@@ -1,3 +1,4 @@
+<%= render_template('admin_header', app_name: 'admin') %>
 <div class="section-details">
   <h1>Edit Section #<%= @section.id %></h1>
 
@@ -18,13 +19,11 @@
 
     <div class="detail">
       <label for="description"><strong>Description:</strong></label>
-      <input
-        type="text"
+      <textarea
         name="section[description]"
         id="description"
         class="form-control"
-        value="<%= @section.description %>"
-      />
+      ><%= @section.description %></textarea>
     </div>
 
     <div class="actions">
