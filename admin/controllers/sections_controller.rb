@@ -1,11 +1,11 @@
 class Admin::SectionsController < Rubee::BaseController
   include Rubee::AuthTokenable
-  auth_methods :index, :new, :create, :edit, :update, :destroy
+  auth_methods :index, :new, :create, :edit, :update, :destroy, :show
+  before :index, :new, :create, :edit, :update, :destroy, :show, :set_user
 
   # GET /admin/sections
   def index
     @sections = Admin::Section.all
-    @user = authentificated_user
     response_with(object: { user: @authentificated_user })
   end
 
@@ -51,5 +51,11 @@ class Admin::SectionsController < Rubee::BaseController
   def edit
     @section = Admin::Section.find(params[:id])
     response_with
+  end
+
+  private
+
+  def set_user
+    @user = authentificated_user
   end
 end

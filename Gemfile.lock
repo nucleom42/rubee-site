@@ -1,3 +1,9 @@
+PATH
+  remote: ../rubee
+  specs:
+    ru.Bee (1.9.12)
+      bundler (~> 2.1, >= 2.1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -43,8 +49,6 @@ GEM
       ffi (~> 1.0)
     rerun (0.14.0)
       listen (~> 3.0)
-    ru.Bee (1.9.11)
-      bundler (~> 2.1, >= 2.1.4)
     sequel (5.94.0)
       bigdecimal
     sqlite3 (2.7.1-aarch64-linux-gnu)
@@ -82,7 +86,7 @@ DEPENDENCIES
   rackup
   rake
   rerun
-  ru.Bee
+  ru.Bee!
   sequel
   sqlite3
 

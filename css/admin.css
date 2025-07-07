@@ -232,3 +232,9 @@ textarea {
   font-size: 14px;
   color: #777;
 }
+
+.error {
+  color: red;
+  margin-top: 1rem;
+  font-size: 14px;
+}
