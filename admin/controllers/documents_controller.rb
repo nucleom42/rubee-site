@@ -1,8 +1,69 @@
 class Admin::DocumentsController < Rubee::BaseController
   include Rubee::AuthTokenable
-  auth_methods :index
+  auth_methods :index, :new, :create, :edit, :update, :destroy, :show
+  before :index, :new, :create, :edit, :update, :destroy, :show, :set_user
 
+  # GET /admin/documents
   def index
+    @documents = Admin::Document.all
+    response_with(object: { user: @authentificated_user })
+  end
+
+  # GET /admin/documents/new
+  def new
     response_with
+  end
+
+  # GET /admin/documents/{id}
+  def show
+    @document = Admin::Document.find(params[:id])
+    response_with
+  end
+
+  # POST /admin/documents
+  def create
+    @document = Admin::Document.new(params[:document])
+    if @document.save
+      response_with(type: :redirect, to: "/admin/documents")
+    else
+      response_with(render_view: "admin_documents_new")
+    end
+  end
+
+  # PUT /admin/documents/{id}
+  def update
+    @document = Admin::Document.find(params[:id])
+    if @document.assign_attributes(params[:document]) && @document.save
+      response_with(type: :redirect, to: "/admin/documents")
+    else
+      response_with(render_view: "admin_documents_edit")
+    end
+  end
+
+  # DELETE /admin/documents/{id}
+  def destroy
+    @document = Admin::Document.find(params[:id])
+    @document.destroy
+    response_with(type: :redirect, to: "/admin/documents")
+  end
+
+  # GET /admin/documents/{id}/edit
+  def edit
+    @document = Admin::Document.find(params[:id])
+    response_with
+  end
+
+  private
+
+  def set_user
+    @user = authentificated_user
+  end
+
+  def handle_auth
+    if authentificated?
+      yield
+    else
+      response_with(type: :redirect, to: "/login")
+    end
   end
 end

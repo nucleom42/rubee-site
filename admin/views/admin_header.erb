@@ -2,7 +2,16 @@
   <div class="user-info">
     Logged in as: <strong><%= @user.email %></strong>
   </div>
-  <form action="/admin/users/logout" method="POST" class="logout-form">
-    <button type="submit" class="btn btn-secondary">Logout</button>
-  </form>
+
+  <div class="user-dropdown">
+    <button class="dropdown-toggle">Menu ▼</button>
+    <div class="dropdown-menu">
+      <a href="/admin/sections" class="dropdown-item">Sections</a>
+      <a href="/admin/documents" class="dropdown-item">Documents</a>
+      <form action="/admin/users/logout" method="POST">
+        <button type="submit" class="dropdown-item">Logout</button>
+      </form>
+    </div>
+  </div>
 </div>
+

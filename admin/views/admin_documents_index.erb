@@ -1,1 +1,36 @@
-<h1>admin_documents_index View</h1>
+<%= render_template('admin_header', locals: { user: @authenticated_user }, app_name: 'admin') %>
+<div class="sections-wrapper">
+  <div class="header">
+    <h1>Documents</h1>
+    <a href="<%= '/admin/documents/new' %>" class="btn btn-primary">+ New Document</a>
+  </div>
+
+  <table class="sections-table">
+    <thead>
+      <tr>
+        <% Admin::Document.dataset.columns.map do |column| %>
+          <th><%= column %></th>
+        <% end %>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @documents.each do |document| %>
+        <tr>
+          <td><%= document.id %></td>
+          <td><%= document.title %></td>
+          <td><%= document.content %></td>
+          <td><a href="<%= "/admin/sections/#{document.admin_section_id}" %>"><%= document.section.title %></a></td>
+          <td>
+            <a href="<%= "/admin/documents/#{document.id}" %>" class="action-link">Show</a>
+            <a href="<%= "/admin/documents/#{document.id}/edit" %>" class="action-link">Edit</a>
+            <form action="<%= "/admin/documents/#{document.id}"  %>" method="post" >
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="action-link" onclick="return confirm('Are you sure?')">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
