@@ -58,4 +58,12 @@ class Admin::SectionsController < Rubee::BaseController
   def set_user
     @user = authentificated_user
   end
+
+  def handle_auth
+    if authentificated?
+      yield
+    else
+      response_with(type: :redirect, to: "/login")
+    end
+  end
 end

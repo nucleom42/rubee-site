@@ -26,4 +26,11 @@ Rubee::Router.draw do |router|
                { name: :content, type: :text },
                { name: :admin_section_id, type: :foreign_key },
              ] })
+
+  router.get('/admin/documents/new', to: 'documents#new', namespace: :admin)
+  router.post('/admin/documents', to: 'documents#create', namespace: :admin)
+  router.get('/admin/documents/{id}', to: 'documents#show', namespace: :admin)
+  router.get('/admin/documents/{id}/edit', to: 'documents#edit', namespace: :admin)
+  router.put('/admin/documents/{id}', to: 'documents#update', namespace: :admin)
+  router.delete('/admin/documents/{id}', to: 'documents#destroy', namespace: :admin)
 end
