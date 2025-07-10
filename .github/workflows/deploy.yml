@@ -23,6 +23,9 @@ jobs:
           script: |
             bash -l -c "
               cd ~/app/rubee-site
+              cat .gitignore | grep -v '^#' | while read file; do
+                git update-index --assume-unchanged "$file"
+              done
               git pull origin main --rebase
               chmod +x ./deploy.sh
               ./deploy.sh
