@@ -23,7 +23,9 @@ jobs:
           script: |
             bash -l -c "
               cd ~/app/rubee-site
-              git pull --rebase origin main
+              git stash --include-untracked
+              git pull origin main --no-rebase
+              git stash pop || true
               chmod +x ./deploy.sh
               ./deploy.sh
             "
