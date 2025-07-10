@@ -23,9 +23,9 @@ jobs:
           script: |
             bash -l -c "
               cd ~/app/rubee-site
-              git reset --hard HEAD
-              git clean -fd
+              git stash
               git pull origin main
+              git stash pop
               chmod +x ./deploy.sh
               ./deploy.sh
             "
