@@ -1,2 +1,5 @@
 node_modules/
 db/production.db
+db/test.db
+db/development.db
+db/structure.rb
