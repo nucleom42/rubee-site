@@ -11,6 +11,7 @@ class Admin::DocumentsController < Rubee::BaseController
 
   # GET /admin/documents/new
   def new
+    @sections = Admin::Section.all
     response_with
   end
 
