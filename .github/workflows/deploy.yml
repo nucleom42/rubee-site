@@ -23,7 +23,7 @@ jobs:
           script: |
             bash -l -c "
               cd ~/app/rubee-site
-              git pull origin main
+              git pull --rebase origin main
               chmod +x ./deploy.sh
               ./deploy.sh
             "
