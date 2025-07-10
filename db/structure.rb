@@ -8,7 +8,7 @@ STRUCTURE = {
       primary_key: true,
       auto_increment: true,
       type: "integer",
-      ruby_default: nil
+      ruby_default: nil,
     },
     title: {
       generated: false,
@@ -18,7 +18,7 @@ STRUCTURE = {
       primary_key: false,
       type: "string",
       ruby_default: nil,
-      max_length: 255
+      max_length: 255,
     },
     content: {
       generated: false,
@@ -27,7 +27,7 @@ STRUCTURE = {
       db_type: "TEXT",
       primary_key: false,
       type: "string",
-      ruby_default: nil
+      ruby_default: nil,
     },
     admin_section_id: {
       generated: false,
@@ -36,8 +36,8 @@ STRUCTURE = {
       db_type: "INTEGER",
       primary_key: false,
       type: "integer",
-      ruby_default: nil
-    }
+      ruby_default: nil,
+    },
   },
   admin_sections: {
     id: {
@@ -48,7 +48,7 @@ STRUCTURE = {
       primary_key: true,
       auto_increment: true,
       type: "integer",
-      ruby_default: nil
+      ruby_default: nil,
     },
     title: {
       generated: false,
@@ -58,7 +58,7 @@ STRUCTURE = {
       primary_key: false,
       type: "string",
       ruby_default: nil,
-      max_length: 255
+      max_length: 255,
     },
     description: {
       generated: false,
@@ -67,8 +67,8 @@ STRUCTURE = {
       db_type: "TEXT",
       primary_key: false,
       type: "string",
-      ruby_default: nil
-    }
+      ruby_default: nil,
+    },
   },
   users: {
     id: {
@@ -79,7 +79,7 @@ STRUCTURE = {
       primary_key: true,
       auto_increment: true,
       type: "integer",
-      ruby_default: nil
+      ruby_default: nil,
     },
     email: {
       generated: false,
@@ -89,7 +89,7 @@ STRUCTURE = {
       primary_key: false,
       type: "string",
       ruby_default: nil,
-      max_length: 255
+      max_length: 255,
     },
     password: {
       generated: false,
@@ -99,7 +99,7 @@ STRUCTURE = {
       primary_key: false,
       type: "string",
       ruby_default: nil,
-      max_length: 255
-    }
-  }
+      max_length: 255,
+    },
+  },
 }

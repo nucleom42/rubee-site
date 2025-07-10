@@ -1,4 +1,4 @@
-name: Deploy to Raspberry Pi
+name: Deploy
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy to Raspberry Pi
+      - name: Deploy to PI
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
@@ -23,9 +23,7 @@ jobs:
           script: |
             bash -l -c "
               cd ~/app/rubee-site
-              git stash
               git pull origin main
-              git stash pop
               chmod +x ./deploy.sh
               ./deploy.sh
             "
