@@ -23,8 +23,10 @@ jobs:
           script: |
             bash -l -c "
               cd ~/app/rubee-site
+              git fetch origin
               git stash --include-untracked
-              git pull origin main --no-rebase
+              git reset --hard origin/main
+              git clean -fdX
               git stash pop || true
               chmod +x ./deploy.sh
               ./deploy.sh
