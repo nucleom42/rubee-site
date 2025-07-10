@@ -26,7 +26,7 @@ jobs:
               cat .gitignore | grep -v '^#' | while read file; do
                 git update-index --assume-unchanged "$file"
               done
-              git pull origin main --rebase
+              git reset --hard origin/main
               chmod +x ./deploy.sh
               ./deploy.sh
             "
