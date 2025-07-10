@@ -23,8 +23,8 @@ jobs:
           script: |
             bash -l -c "
               cd ~/app/rubee-site
-              cat .gitignore | grep -v '^#' | while read file; do
-                git update-index --assume-unchanged "$file"
+              grep -v '^#' .gitignore | grep -v '^$' | while read file; do
+                [ -e "$file" ] && git update-index --assume-unchanged "$file"
               done
               git reset --hard origin/main
               chmod +x ./deploy.sh
