@@ -20,27 +20,27 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
-    script: |
-      bash -l -c "
-        cd ~/app/rubee-site
+          script: |
+            bash -l -c "
+              cd ~/app/rubee-site
 
-        # Tell Git to ignore changes to files you want to protect
-        git update-index --assume-unchanged db/production.db db/structure.rb
+              # Tell Git to ignore changes to files you want to protect
+              git update-index --assume-unchanged db/production.db db/structure.rb
 
-        # Abort any existing merge/rebase
-        git merge --abort || true
-        git rebase --abort || true
+              # Abort any existing merge/rebase
+              git merge --abort || true
+              git rebase --abort || true
 
-        # Stash any other changes
-        git stash --include-untracked
+              # Stash any other changes
+              git stash --include-untracked
 
-        # Pull with rebase (respects assume-unchanged)
-        git pull origin main --rebase
+              # Pull with rebase (respects assume-unchanged)
+              git pull origin main --rebase
 
-        # Reapply any stashed local changes
-        git stash pop || true
+              # Reapply any stashed local changes
+              git stash pop || true
 
-        # Continue with deployment
-        chmod +x ./deploy.sh
-        ./deploy.sh
-      "
+              # Continue with deployment
+              chmod +x ./deploy.sh
+              ./deploy.sh
+            "
