@@ -20,7 +20,6 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
-
     script: |
       bash -l -c "
         cd ~/app/rubee-site
@@ -45,6 +44,3 @@ jobs:
         chmod +x ./deploy.sh
         ./deploy.sh
       "
-
-
-
