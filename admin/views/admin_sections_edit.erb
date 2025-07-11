@@ -19,11 +19,8 @@
 
     <div class="detail">
       <label for="description"><strong>Description:</strong></label>
-      <textarea
-        name="section[description]"
-        id="description"
-        class="form-control"
-      ><%= @section.description %></textarea>
+      <input id="description" type="hidden" name="section[description]" value="<%= @section.description %>">
+      <trix-editor input="description"></trix-editor>
     </div>
 
     <div class="actions">
