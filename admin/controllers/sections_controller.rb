@@ -5,6 +5,7 @@ class Admin::SectionsController < Rubee::BaseController
 
   # GET /admin/sections
   def index
+    @columns = Admin::Section.dataset.columns
     @sections = Admin::Section.all
     response_with(object: { user: @authentificated_user })
   end

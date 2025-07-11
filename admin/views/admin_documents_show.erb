@@ -1,0 +1,30 @@
+<%= render_template('admin_header', app_name: 'admin') %>
+<div class="section-details">
+  <h1>Document Details</h1>
+
+  <div class="detail">
+    <strong>ID:</strong>
+    <span><%= @document.id %></span>
+  </div>
+
+  <div class="detail">
+    <strong>Title:</strong>
+    <span><%= @document.title %></span>
+  </div>
+
+  <div class="detail">
+    <strong>Content:</strong>
+    <span><%= @document.content %></span>
+  </div>
+
+  <div class="detail">
+    <strong>Section:</strong>
+    <span><%= @document.section.title %></span>
+  </div>
+
+
+  <div class="actions">
+    <a href="<%= "/admin/documents/#{@document.id}/edit" %>" class="btn btn-primary">Edit</a>
+    <a href="<%= "/admin/documents" %>" class="btn btn-secondary">Back to Index</a>
+  </div>
+</div>

@@ -8,7 +8,7 @@
   <table class="sections-table">
     <thead>
       <tr>
-        <% Admin::Section.dataset.columns.map do |column| %>
+        <% @columns.map do |column| %>
           <th><%= column %></th>
         <% end %>
         <th>actions</th>
@@ -19,7 +19,7 @@
         <tr>
           <td><%= section.id %></td>
           <td><%= section.title %></td>
-          <td><%= section.description %></td>
+          <td><%= section.description[..15] %> ..</td>
           <td>
             <a href="<%= "/admin/sections/#{section.id}" %>" class="action-link">Show</a>
             <a href="<%= "/admin/sections/#{section.id}/edit" %>" class="action-link">Edit</a>

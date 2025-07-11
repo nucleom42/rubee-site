@@ -284,3 +284,33 @@ textarea {
 .user-dropdown:hover .dropdown-menu {
   display: block;
 }
+
+.detail {
+  margin-bottom: 1rem;
+}
+
+.detail label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.detail select.form-control {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.detail select.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}

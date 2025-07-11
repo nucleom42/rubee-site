@@ -1,0 +1,49 @@
+<%= render_template('admin_header', app_name: 'admin') %>
+<div class="section-details">
+  <h1>Edit Document #<%= @document.id %></h1>
+
+  <form action="/admin/documents/<%= @document.id %>" method="post">
+    <input type="hidden" name="_method" value="put" />
+
+    <div class="detail">
+      <label for="title"><strong>Title:</strong></label>
+      <input
+        type="text"
+        name="document[title]"
+        id="title"
+        class="form-control"
+        value="<%= @document.title %>"
+        required
+      />
+    </div>
+
+    <div class="detail">
+      <label for="content"><strong>Content:</strong></label>
+      <textarea
+        name="document[content]"
+        id="content"
+        class="form-control"
+      ><%= @document.content %></textarea>
+    </div>
+
+    <div class="detail">
+      <label for="section"><strong>Section:</strong></label>
+      <select
+        name="document[admin_section_id]"
+        id="section"
+        class="form-control"
+      >
+        <% @sections.each do |section| %>
+          <option value="<%= section.id %>" <%= @document.admin_section_id == section.id ? 'selected' : '' %>>
+            <%= section.title %>
+          </option>
+        <% end %>
+      </select>
+    </div>
+
+    <div class="actions">
+      <input type="submit" value="Save" class="btn btn-primary" />
+      <a href="/admin/documents/<%= @document.id %>" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>

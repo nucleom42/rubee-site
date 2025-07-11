@@ -6,6 +6,13 @@ class Admin::DocumentsController < Rubee::BaseController
   # GET /admin/documents
   def index
     @documents = Admin::Document.all
+    @columns = Admin::Document.dataset.columns.map do |column|
+      if column.to_s == "admin_section_id"
+        "section"
+      else
+        column
+      end
+    end
     response_with(object: { user: @authentificated_user })
   end
 
@@ -50,6 +57,7 @@ class Admin::DocumentsController < Rubee::BaseController
 
   # GET /admin/documents/{id}/edit
   def edit
+    @sections = Admin::Section.all
     @document = Admin::Document.find(params[:id])
     response_with
   end
