@@ -36,4 +36,7 @@ Rubee::Router.draw do |router|
 
   # Section API
   router.get('/api/sections', to: 'sections#index_json', namespace: :admin)
+
+  # Document API
+  router.get('/api/documents/{id}', to: 'documents#show_json', namespace: :admin)
 end

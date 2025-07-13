@@ -28,6 +28,12 @@ class Admin::DocumentsController < Rubee::BaseController
     response_with
   end
 
+  # GET /api/documents/{id}
+  def show_json
+    @document = Admin::Document.find(params[:id])
+    response_with object: @document, type: :json
+  end
+
   # POST /admin/documents
   def create
     @document = Admin::Document.new(params[:document])
