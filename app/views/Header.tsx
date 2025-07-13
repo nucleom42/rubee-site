@@ -6,15 +6,15 @@ export default function Header() {
       <header>
         <nav className="navbar">
           <div className="nav-group">
-            <a href="#why">Why Rubee?</a>
+            <Link to="/#why">Why Rubee?</Link>
             <Link to="/docs">Docs</Link>
           </div>
           <div className="logo">
-            <img src="images/rubee.svg" alt="rubee"/>
+            <Link to="/"><img src="images/rubee.svg" alt="rubee"/></Link>
           </div>
           <div className="nav-group">
-            <a href="#community">Community</a>
-            <a href="#github">GitHub</a>
+            <a href="https://github.com/nucleom42/rubee/discussions">Community</a>
+            <a href="https://github.com/nucleom42/rubee">GitHub</a>
           </div>
         </nav>
 
