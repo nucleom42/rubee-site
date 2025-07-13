@@ -19,7 +19,7 @@ export default function Docs() {
           {sections.map(section => (
             <div key={section.id} className="feature">
               <h3>{section.title}</h3>
-              <p>{section.description}</p>
+              <p dangerouslySetInnerHTML={{ __html: section.description }} />
             </div>
           ))}
         </div>
