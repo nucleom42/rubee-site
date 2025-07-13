@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -6,7 +7,7 @@ export default function Header() {
         <nav className="navbar">
           <div className="nav-group">
             <a href="#why">Why Rubee?</a>
-            <a href="#docs">Docs</a>
+            <Link to="/docs">Docs</Link>
           </div>
           <div className="logo">
             <img src="images/rubee.svg" alt="rubee"/>

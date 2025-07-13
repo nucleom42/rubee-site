@@ -10,6 +10,12 @@ class Admin::SectionsController < Rubee::BaseController
     response_with(object: { user: @authentificated_user })
   end
 
+  # GET /api/sections
+  def index_json
+    @sections = Admin::Section.all
+    response_with object: @sections, type: :json
+  end
+
   # GET /admin/sections/new
   def new
     response_with

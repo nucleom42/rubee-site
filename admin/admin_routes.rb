@@ -4,7 +4,7 @@ Rubee::Router.draw do |router|
   router.post('/admin/users/login', to: 'users#login', namespace: :admin)
   router.post('/admin/users/logout', to: 'users#logout', namespace: :admin)
 
-  # Sections
+  # Sections admin
   router.get('/admin/sections', to: 'sections#index',
              namespace: :admin, model: { name: 'section', attributes: [
                { name: :id, type: :primary },
@@ -18,7 +18,7 @@ Rubee::Router.draw do |router|
   router.put('/admin/sections/{id}', to: 'sections#update', namespace: :admin)
   router.delete('/admin/sections/{id}', to: 'sections#destroy', namespace: :admin)
 
-  # Documents
+  # Documents admin
   router.get('/admin/documents', to: 'documents#index',
              namespace: :admin, model: { name: 'document', attributes: [
                { name: :id, type: :primary },
@@ -33,4 +33,7 @@ Rubee::Router.draw do |router|
   router.get('/admin/documents/{id}/edit', to: 'documents#edit', namespace: :admin)
   router.put('/admin/documents/{id}', to: 'documents#update', namespace: :admin)
   router.delete('/admin/documents/{id}', to: 'documents#destroy', namespace: :admin)
+
+  # Section API
+  router.get('/api/sections', to: 'sections#index_json', namespace: :admin)
 end
