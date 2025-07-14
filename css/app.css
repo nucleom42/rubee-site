@@ -147,7 +147,7 @@ pre {
 pre .copy-btn {
   position: absolute;
   top: 8px;
-  left: 8px;
+  right: 8px;
   background: #eaeef2;
   border: 1px solid #ccc;
   border-radius: 6px;
