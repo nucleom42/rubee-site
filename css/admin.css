@@ -331,7 +331,7 @@ pre {
 pre .copy-btn {
   position: absolute;
   top: 8px;
-  left: 8px;
+  right: 8px;
   background: #eaeef2;
   border: none;
   border-radius: 4px;
