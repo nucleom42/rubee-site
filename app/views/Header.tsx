@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-export default function Header() {
+export default function Header(props) {
+  const { title } = props;
   return (
       <header>
         <nav className="navbar">
@@ -20,7 +21,7 @@ export default function Header() {
 
         <div className="hero">
           <h1>Rubee</h1>
-          <p>Fast and lightweight Ruby application server designed for minimalism and flexibility.</p>
+          <p>{title ?? 'Fast and lightweight Ruby application server designed for minimalism and flexibility.'}</p>
         </div>
       </header>
   );

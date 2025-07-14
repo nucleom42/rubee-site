@@ -6,13 +6,13 @@ import Footer from "./Footer";
 
 export default function DocumentPage() {
   const { id } = useParams();
-  const [docData, setDocData] = useState(null);
+  const [doc, setDoc] = useState(null);
 
   // Fetch document data
   useEffect(() => {
     fetch(`/api/documents/${id}`)
       .then((response) => response.json())
-      .then((data) => setDocData(data))
+      .then((data) => setDoc(data))
       .catch((error) => {
         console.error("Error fetching document:", error);
       });
@@ -20,7 +20,7 @@ export default function DocumentPage() {
 
   // Add copy buttons after content renders
   useEffect(() => {
-    if (!docData) return;
+    if (!doc) return;
 
     const pres = document.querySelectorAll("pre");
     pres.forEach((pre) => {
@@ -37,9 +37,9 @@ export default function DocumentPage() {
       });
       pre.insertBefore(button, pre.firstChild);
     });
-  }, [docData]);
+  }, [doc]);
 
-  if (!docData) {
+  if (!doc) {
     return (
       <>
         <Header />
@@ -51,12 +51,12 @@ export default function DocumentPage() {
 
   return (
     <>
-      <Header />
+      <Header title={doc.title} />
       <main>
-        <h2>{docData.title}</h2>
+        <h2>{doc.title}</h2>
         <div
           className="content"
-          dangerouslySetInnerHTML={{ __html: docData.content }}
+          dangerouslySetInnerHTML={{ __html: doc.content }}
         />
       </main>
       <Footer />

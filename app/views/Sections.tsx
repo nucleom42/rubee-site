@@ -13,7 +13,7 @@ export default function Sections() {
   }, [setSections]);
   return (
     <>
-      <Header />
+      <Header title="All about Rubee" />
       <main>
         <h2 id="why">All about Rubee</h2>
         <div className="features">
@@ -22,7 +22,7 @@ export default function Sections() {
               <Link to={`/sections/${section.id}/documents`}>
                 <h3>{section.title}</h3>
               </Link>
-              <p dangerouslySetInnerHTML={{ __html: section.description.slice(0, 30) + " ..." }} />
+              <p dangerouslySetInnerHTML={{ __html: section.description.slice(0, 60) + " ..." }} />
             </div>
           ))}
         </div>

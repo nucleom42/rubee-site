@@ -28,7 +28,7 @@ export default function Documents() {
 
   return (
     <>
-      <Header />
+      <Header title="Documents" />
       <main>
         <div className="features">
         {documents.map(doc => (
@@ -36,7 +36,7 @@ export default function Documents() {
               <Link to={`/documents/${doc.id}`}>
                   <h3>{doc.title}</h3>
               </Link>
-              <p dangerouslySetInnerHTML={{ __html: doc.content.slice(0, 30) + " ..." }} />
+              <p dangerouslySetInnerHTML={{ __html: doc.content.slice(0, 60) + " ..." }} />
             </div>
           ))}
         </div>
