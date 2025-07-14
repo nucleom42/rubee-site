@@ -10,7 +10,7 @@ export default function Header() {
             <Link to="/docs">Docs</Link>
           </div>
           <div className="logo">
-            <Link to="/"><img src="images/rubee.svg" alt="rubee"/></Link>
+            <Link to="/"><img src="/images/rubee.svg" alt="rubee"/></Link>
           </div>
           <div className="nav-group">
             <a href="https://github.com/nucleom42/rubee/discussions">Community</a>
