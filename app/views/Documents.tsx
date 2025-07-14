@@ -14,7 +14,7 @@ export default function Documents() {
       .catch(error => {
         console.error("Error fetching document:", error);
       });
-  }, [id, setDocuments]); // 🔹 re-fetch if id changes
+  }, [id, setDocuments]);
 
   if (!documents) {
     return (
@@ -33,10 +33,10 @@ export default function Documents() {
         <div className="features">
         {documents.map(doc => (
             <div key={doc.id} className="feature">
-            <Link to={`/documents/${doc.id}`}>
-                <h3>{doc.title}</h3>
-                <p dangerouslySetInnerHTML={{ __html: doc.content }} />
-            </Link>
+              <Link to={`/documents/${doc.id}`}>
+                  <h3>{doc.title}</h3>
+              </Link>
+              <p dangerouslySetInnerHTML={{ __html: doc.content.slice(0, 30) + " ..." }} />
             </div>
           ))}
         </div>

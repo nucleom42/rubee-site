@@ -21,8 +21,8 @@ export default function Sections() {
             <div key={section.id} className="feature">
               <Link to={`/sections/${section.id}/documents`}>
                 <h3>{section.title}</h3>
-                <p dangerouslySetInnerHTML={{ __html: section.description }} />
               </Link>
+              <p dangerouslySetInnerHTML={{ __html: section.description.slice(0, 30) + " ..." }} />
             </div>
           ))}
         </div>
