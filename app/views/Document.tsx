@@ -1,22 +1,45 @@
+
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default function Document() {
-  const { id } = useParams(); // 🔹 Get the `id` from the URL
-  const [document, setDocument] = useState(null);
+export default function DocumentPage() {
+  const { id } = useParams();
+  const [docData, setDocData] = useState(null);
 
+  // Fetch document data
   useEffect(() => {
     fetch(`/api/documents/${id}`)
-      .then(response => response.json())
-      .then(data => setDocument(data))
-      .catch(error => {
+      .then((response) => response.json())
+      .then((data) => setDocData(data))
+      .catch((error) => {
         console.error("Error fetching document:", error);
       });
-  }, [id]); // 🔹 re-fetch if id changes
+  }, [id]);
 
-  if (!document) {
+  // Add copy buttons after content renders
+  useEffect(() => {
+    if (!docData) return;
+
+    const pres = document.querySelectorAll("pre");
+    pres.forEach((pre) => {
+      // Avoid adding duplicate buttons
+      if (pre.querySelector(".copy-btn")) return;
+
+      const button = document.createElement("button");
+      button.className = "copy-btn";
+      button.textContent = "Copy";
+      button.addEventListener("click", () => {
+        navigator.clipboard.writeText(pre.textContent.trim());
+        button.textContent = "Copied!";
+        setTimeout(() => (button.textContent = "Copy"), 1000);
+      });
+      pre.insertBefore(button, pre.firstChild);
+    });
+  }, [docData]);
+
+  if (!docData) {
     return (
       <>
         <Header />
@@ -30,8 +53,11 @@ export default function Document() {
     <>
       <Header />
       <main>
-        <h2>{document.title}</h2>
-        <div dangerouslySetInnerHTML={{ __html: document.content }} />
+        <h2>{docData.title}</h2>
+        <div
+          className="content"
+          dangerouslySetInnerHTML={{ __html: docData.content }}
+        />
       </main>
       <Footer />
     </>
