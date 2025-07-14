@@ -8,7 +8,7 @@ export default function Footer() {
     <footer>
       <div>&copy; {year} Rubee</div>
       <div className="pi-hosting">
-        <span>Hosted on Raspberry Pi </span>
+        <span>Hosted on Raspberry Pi &nbsp;</span>
         <img
           src="/images/pi_logo.png"
           alt="Raspberry Pi Logo"
