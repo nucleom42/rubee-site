@@ -16,6 +16,12 @@ class Admin::DocumentsController < Rubee::BaseController
     response_with(object: { user: @authentificated_user })
   end
 
+  def index_json
+    section_id = params[:section_id]
+    @documents = Admin::Document.where(admin_section_id: section_id)
+    response_with(object: @documents, type: :json)
+  end
+
   # GET /admin/documents/new
   def new
     @sections = Admin::Section.all
@@ -31,7 +37,7 @@ class Admin::DocumentsController < Rubee::BaseController
   # GET /api/documents/{id}
   def show_json
     @document = Admin::Document.find(params[:id])
-    response_with object: @document, type: :json
+    response_with(object: @document, type: :json)
   end
 
   # POST /admin/documents

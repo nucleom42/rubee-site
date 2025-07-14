@@ -2,8 +2,9 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import Header from "./Header";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
-export default function Docs() {
+export default function Sections() {
   const [sections, setSections] = useState([]);
   useEffect(() => {
     fetch('/api/sections')
@@ -18,8 +19,10 @@ export default function Docs() {
         <div className="features">
           {sections.map(section => (
             <div key={section.id} className="feature">
-              <h3>{section.title}</h3>
-              <p dangerouslySetInnerHTML={{ __html: section.description }} />
+              <Link to={`/sections/${section.id}/documents`}>
+                <h3>{section.title}</h3>
+                <p dangerouslySetInnerHTML={{ __html: section.description }} />
+              </Link>
             </div>
           ))}
         </div>
