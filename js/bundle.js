@@ -192,6 +192,7 @@ pre .copy-btn {
   transition: opacity 0.2s;
   z-index: 2;
   display: block;
+  margin-bottom: 8px;
   /* stay on top of content */
 }
 
