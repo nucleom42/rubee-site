@@ -16,11 +16,8 @@
 
     <div class="detail">
       <label for="content"><strong>Content:</strong></label>
-      <textarea
-        name="document[content]"
-        id="content"
-        class="form-control"
-      ></textarea>
+      <input id="content" type="hidden" name="document[content]">
+      <trix-editor input="content"></trix-editor>
     </div>
 
 
