@@ -22,7 +22,7 @@ export default function Sections() {
               <Link to={`/sections/${section.id}/documents`}>
                 <h3>{section.title}</h3>
               </Link>
-              <p dangerouslySetInnerHTML={{ __html: section.description.slice(0, 60) + " ..." }} />
+              <p dangerouslySetInnerHTML={{ __html: section.description}} />
             </div>
           ))}
         </div>

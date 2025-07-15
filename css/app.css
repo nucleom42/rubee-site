@@ -98,31 +98,59 @@ footer {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* center whole navbar group */
   background: var(--accent);
   padding: 0.75rem 1.5rem;
   font-weight: bold;
+  flex-wrap: wrap; /* needed for mobile wrapping */
 }
 
 .nav-group {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
+  flex: 0 1;
 }
 
 .nav-group a {
   color: var(--primary);
   text-decoration: none;
+  align-content: center;
 }
 
 .nav-group a:hover {
   text-decoration: underline;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem;
+  flex: 0 0 auto;
+}
+
 .logo img {
   width: 50px;
   height: auto;
-  margin-right: 1.5rem;
-  margin-left: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .nav-group {
+    justify-content: center;
+    flex: 1 1 100%;
+    margin: 0.25rem 0;
+  }
+
+  .logo {
+    order: 0;
+    flex: 0 0 auto;
+    margin: 0.25rem 0;
+  }
 }
 
 .hero {
@@ -172,4 +200,18 @@ pre .copy-btn:hover {
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.pi-hosting {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centers the content horizontally */
+  gap: 0.4rem; /* space between text and image */
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+.pi-hosting img.pi-logo {
+  height: 30px;
+  vertical-align: middle;
 }

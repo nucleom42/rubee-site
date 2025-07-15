@@ -107,31 +107,59 @@ footer {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* center whole navbar group */
   background: var(--accent);
   padding: 0.75rem 1.5rem;
   font-weight: bold;
+  flex-wrap: wrap; /* needed for mobile wrapping */
 }
 
 .nav-group {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
+  flex: 0 1;
 }
 
 .nav-group a {
   color: var(--primary);
   text-decoration: none;
+  align-content: center;
 }
 
 .nav-group a:hover {
   text-decoration: underline;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem;
+  flex: 0 0 auto;
+}
+
 .logo img {
   width: 50px;
   height: auto;
-  margin-right: 1.5rem;
-  margin-left: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .nav-group {
+    justify-content: center;
+    flex: 1 1 100%;
+    margin: 0.25rem 0;
+  }
+
+  .logo {
+    order: 0;
+    flex: 0 0 auto;
+    margin: 0.25rem 0;
+  }
 }
 
 .hero {
@@ -182,7 +210,21 @@ pre .copy-btn:hover {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
-`,document.head.appendChild(e)}})();var ee=j(U());var q=j(U());function Je(e){let{title:t}=e,r=co();return q.default.createElement("header",null,q.default.createElement("nav",{className:"navbar"},q.default.createElement("div",{className:"nav-group"},q.default.createElement(Ke,{to:"/#why"},"Why Rubee?"),q.default.createElement(Ke,{to:"/docs"},"Docs")),q.default.createElement("div",{className:"logo"},q.default.createElement(Ke,{to:"/"},q.default.createElement("img",{src:"/images/rubee.svg",alt:"rubee"}))),q.default.createElement("div",{className:"nav-group"},q.default.createElement("a",{href:"https://github.com/nucleom42/rubee/discussions"},"Community"),q.default.createElement("a",{href:"https://github.com/nucleom42/rubee"},"GitHub"))),q.default.createElement("div",{className:"hero"},q.default.createElement("h1",null,"Rubee"),t?q.default.createElement(q.default.Fragment,null,q.default.createElement("h2",null,t),q.default.createElement("button",{onClick:()=>r(-1)},"\u2190 Back")):q.default.createElement("p",null,"Fast and lightweight Ruby application server designed for minimalism and flexibility.")))}var Hr=j(U());function Xe(){let e=new Date().getFullYear();return Hr.default.createElement("footer",null,Hr.default.createElement("div",null,"\xA9 ",e," Rubee"),Hr.default.createElement("div",{className:"pi-hosting"},Hr.default.createElement("span",null,"Hosted on Raspberry Pi \xA0"),Hr.default.createElement("img",{src:"/images/pi_logo.png",alt:"Raspberry Pi Logo",className:"pi-logo",height:"25"})))}function qi(){return ee.default.createElement(ee.default.Fragment,null,ee.default.createElement(Je,null),ee.default.createElement("main",null,ee.default.createElement("section",{className:"video-section"},ee.default.createElement("iframe",{width:"100%",height:"400",src:"https://www.youtube.com/embed/ko7H70s7qq0",title:"Rubee Introduction",frameBorder:"0",allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",allowFullScreen:!0})),ee.default.createElement("h2",{id:"why"},"Why Rubee?"),ee.default.createElement("div",{className:"features"},ee.default.createElement("div",{className:"feature"},ee.default.createElement("h3",null,"Fast by default"),ee.default.createElement("p",null,"Fiber-based async system with minimal overhead.")),ee.default.createElement("div",{className:"feature"},ee.default.createElement("h3",null,"Minimal yet Powerful"),ee.default.createElement("p",null,"No configuration, just conventions and speed.")),ee.default.createElement("div",{className:"feature"},ee.default.createElement("h3",null,"React-friendly"),ee.default.createElement("p",null,"First-class React rendering support via ERB or JSX.")))),ee.default.createElement(Xe,null))}var Ie=j(U()),ho=j(U());function eu(){let[e,t]=(0,ho.useState)([]);return(0,ho.useEffect)(()=>{fetch("/api/sections").then(r=>r.json()).then(r=>t(r))},[t]),Ie.default.createElement(Ie.default.Fragment,null,Ie.default.createElement(Je,{title:"All about Rubee"}),Ie.default.createElement("main",null,Ie.default.createElement("h2",{id:"why"},"All about Rubee"),Ie.default.createElement("div",{className:"features"},e.map(r=>Ie.default.createElement("div",{key:r.id,className:"feature"},Ie.default.createElement(Ke,{to:`/sections/${r.id}/documents`},Ie.default.createElement("h3",null,r.title)),Ie.default.createElement("p",{dangerouslySetInnerHTML:{__html:r.description.slice(0,60)+" ..."}}))))),Ie.default.createElement(Xe,null))}var te=j(U());function tu(){let{id:e}=On(),[t,r]=(0,te.useState)(null);return(0,te.useEffect)(()=>{fetch(`/api/documents/${e}`).then(n=>n.json()).then(n=>r(n)).catch(n=>{console.error("Error fetching document:",n)})},[e]),(0,te.useEffect)(()=>{if(!t)return;document.querySelectorAll("pre").forEach(a=>{if(a.querySelector(".copy-btn"))return;let o=document.createElement("button");o.className="copy-btn",o.textContent="Copy",o.addEventListener("click",()=>{navigator.clipboard.writeText(a.textContent.trim()),o.textContent="Copied!",setTimeout(()=>o.textContent="Copy",1e3)}),a.insertBefore(o,a.firstChild)})},[t]),t?te.default.createElement(te.default.Fragment,null,te.default.createElement(Je,{title:t.title}),te.default.createElement("main",null,te.default.createElement("h2",null,t.title),te.default.createElement("div",{className:"content",dangerouslySetInnerHTML:{__html:t.content}})),te.default.createElement(Xe,null)):te.default.createElement(te.default.Fragment,null,te.default.createElement(Je,null),te.default.createElement("main",null,te.default.createElement("p",null,"Loading...")),te.default.createElement(Xe,null))}var J=j(U());function ru(){let{id:e}=On(),[t,r]=(0,J.useState)(null);return(0,J.useEffect)(()=>{fetch(`/api/sections/${e}/documents`).then(n=>n.json()).then(n=>r(n)).catch(n=>{console.error("Error fetching document:",n)})},[e,r]),t?J.default.createElement(J.default.Fragment,null,J.default.createElement(Je,{title:"Documents"}),J.default.createElement("main",null,J.default.createElement("div",{className:"features"},t.map(n=>J.default.createElement("div",{key:n.id,className:"feature"},J.default.createElement(Ke,{to:`/documents/${n.id}`},J.default.createElement("h3",null,n.title)),J.default.createElement("p",{dangerouslySetInnerHTML:{__html:n.content.slice(0,60)+" ..."}}))))),J.default.createElement(Xe,null)):J.default.createElement(J.default.Fragment,null,J.default.createElement(Je,null),J.default.createElement("main",null,J.default.createElement("p",null,"Loading...")),J.default.createElement(Xe,null))}var ky=()=>Re.default.createElement("h2",null,"404 Not Found");function Nf(){return Re.default.createElement(Xi,null,Re.default.createElement(Qi,null,Re.default.createElement($t,{path:"/",element:Re.default.createElement(qi,null)}),Re.default.createElement($t,{path:"/docs",element:Re.default.createElement(eu,null)}),Re.default.createElement($t,{path:"*",element:Re.default.createElement(ky,null)}),Re.default.createElement($t,{path:"/documents/:id",element:Re.default.createElement(tu,null)}),Re.default.createElement($t,{path:"/sections/:id/documents",element:Re.default.createElement(ru,null)})))}document.addEventListener("DOMContentLoaded",()=>{let e=document.getElementById("App");e?(0,Tf.createRoot)(e).render(Df.default.createElement(Nf,null)):console.error('React root element "#App" not found in DOM.')});
+
+.pi-hosting {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centers the content horizontally */
+  gap: 0.4rem; /* space between text and image */
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+.pi-hosting img.pi-logo {
+  height: 30px;
+  vertical-align: middle;
+}
+`,document.head.appendChild(e)}})();var ee=j(U());var q=j(U());function Je(e){let{title:t}=e,r=co();return q.default.createElement("header",null,q.default.createElement("nav",{className:"navbar"},q.default.createElement("div",{className:"nav-group"},q.default.createElement(Ke,{to:"/#why"},"Why Rubee?"),q.default.createElement(Ke,{to:"/docs"},"Docs")),q.default.createElement("div",{className:"logo"},q.default.createElement(Ke,{to:"/"},q.default.createElement("img",{src:"/images/rubee.svg",alt:"rubee"}))),q.default.createElement("div",{className:"nav-group"},q.default.createElement("a",{href:"https://github.com/nucleom42/rubee/discussions"},"Community"),q.default.createElement("a",{href:"https://github.com/nucleom42/rubee"},"GitHub"))),q.default.createElement("div",{className:"hero"},q.default.createElement("h1",null,"Rubee"),t?q.default.createElement(q.default.Fragment,null,q.default.createElement("h2",null,t),q.default.createElement("button",{onClick:()=>r(-1)},"\u2190 Back")):q.default.createElement("p",null,"Fast and lightweight Ruby application server designed for minimalism and flexibility.")))}var Hr=j(U());function Xe(){let e=new Date().getFullYear();return Hr.default.createElement("footer",null,Hr.default.createElement("div",null,"\xA9 ",e," Rubee"),Hr.default.createElement("div",{className:"pi-hosting"},Hr.default.createElement("span",null,"Hosted on Raspberry Pi \xA0"),Hr.default.createElement("img",{src:"/images/pi_logo.png",alt:"Raspberry Pi Logo",className:"pi-logo",height:"25"})))}function qi(){return ee.default.createElement(ee.default.Fragment,null,ee.default.createElement(Je,null),ee.default.createElement("main",null,ee.default.createElement("section",{className:"video-section"},ee.default.createElement("iframe",{width:"100%",height:"400",src:"https://www.youtube.com/embed/ko7H70s7qq0",title:"Rubee Introduction",frameBorder:"0",allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",allowFullScreen:!0})),ee.default.createElement("h2",{id:"why"},"Why Rubee?"),ee.default.createElement("div",{className:"features"},ee.default.createElement("div",{className:"feature"},ee.default.createElement("h3",null,"Fast by default"),ee.default.createElement("p",null,"Fiber-based async system with minimal overhead.")),ee.default.createElement("div",{className:"feature"},ee.default.createElement("h3",null,"Minimal yet Powerful"),ee.default.createElement("p",null,"No configuration, just conventions and speed.")),ee.default.createElement("div",{className:"feature"},ee.default.createElement("h3",null,"React-friendly"),ee.default.createElement("p",null,"First-class React rendering support via ERB or JSX.")))),ee.default.createElement(Xe,null))}var Ie=j(U()),ho=j(U());function eu(){let[e,t]=(0,ho.useState)([]);return(0,ho.useEffect)(()=>{fetch("/api/sections").then(r=>r.json()).then(r=>t(r))},[t]),Ie.default.createElement(Ie.default.Fragment,null,Ie.default.createElement(Je,{title:"All about Rubee"}),Ie.default.createElement("main",null,Ie.default.createElement("h2",{id:"why"},"All about Rubee"),Ie.default.createElement("div",{className:"features"},e.map(r=>Ie.default.createElement("div",{key:r.id,className:"feature"},Ie.default.createElement(Ke,{to:`/sections/${r.id}/documents`},Ie.default.createElement("h3",null,r.title)),Ie.default.createElement("p",{dangerouslySetInnerHTML:{__html:r.description}}))))),Ie.default.createElement(Xe,null))}var te=j(U());function tu(){let{id:e}=On(),[t,r]=(0,te.useState)(null);return(0,te.useEffect)(()=>{fetch(`/api/documents/${e}`).then(n=>n.json()).then(n=>r(n)).catch(n=>{console.error("Error fetching document:",n)})},[e]),(0,te.useEffect)(()=>{if(!t)return;document.querySelectorAll("pre").forEach(a=>{if(a.querySelector(".copy-btn"))return;let o=document.createElement("button");o.className="copy-btn",o.textContent="Copy",o.addEventListener("click",()=>{navigator.clipboard.writeText(a.textContent.trim()),o.textContent="Copied!",setTimeout(()=>o.textContent="Copy",1e3)}),a.insertBefore(o,a.firstChild)})},[t]),t?te.default.createElement(te.default.Fragment,null,te.default.createElement(Je,{title:t.title}),te.default.createElement("main",null,te.default.createElement("h2",null,t.title),te.default.createElement("div",{className:"content",dangerouslySetInnerHTML:{__html:t.content}})),te.default.createElement(Xe,null)):te.default.createElement(te.default.Fragment,null,te.default.createElement(Je,null),te.default.createElement("main",null,te.default.createElement("p",null,"Loading...")),te.default.createElement(Xe,null))}var J=j(U());function ru(){let{id:e}=On(),[t,r]=(0,J.useState)(null);return(0,J.useEffect)(()=>{fetch(`/api/sections/${e}/documents`).then(n=>n.json()).then(n=>r(n)).catch(n=>{console.error("Error fetching document:",n)})},[e,r]),t?J.default.createElement(J.default.Fragment,null,J.default.createElement(Je,{title:"Documents"}),J.default.createElement("main",null,J.default.createElement("div",{className:"features"},t.map(n=>J.default.createElement("div",{key:n.id,className:"feature"},J.default.createElement(Ke,{to:`/documents/${n.id}`},J.default.createElement("h3",null,n.title)),J.default.createElement("p",{dangerouslySetInnerHTML:{__html:n.content.slice(0,60)+" ..."}}))))),J.default.createElement(Xe,null)):J.default.createElement(J.default.Fragment,null,J.default.createElement(Je,null),J.default.createElement("main",null,J.default.createElement("p",null,"Loading...")),J.default.createElement(Xe,null))}var ky=()=>Re.default.createElement("h2",null,"404 Not Found");function Nf(){return Re.default.createElement(Xi,null,Re.default.createElement(Qi,null,Re.default.createElement($t,{path:"/",element:Re.default.createElement(qi,null)}),Re.default.createElement($t,{path:"/docs",element:Re.default.createElement(eu,null)}),Re.default.createElement($t,{path:"*",element:Re.default.createElement(ky,null)}),Re.default.createElement($t,{path:"/documents/:id",element:Re.default.createElement(tu,null)}),Re.default.createElement($t,{path:"/sections/:id/documents",element:Re.default.createElement(ru,null)})))}document.addEventListener("DOMContentLoaded",()=>{let e=document.getElementById("App");e?(0,Tf.createRoot)(e).render(Df.default.createElement(Nf,null)):console.error('React root element "#App" not found in DOM.')});
 /*! Bundled license information:
 
 react/cjs/react.production.min.js:
