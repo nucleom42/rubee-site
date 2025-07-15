@@ -176,24 +176,23 @@ pre {
   margin: 1.5em 0;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  overflow-x: auto;
+  overflow: auto; /* use auto instead of x-only */
   text-align: left;
 }
 
-/* Copy button (styled like GitHub's corner icon) */
 pre .copy-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
+  position: sticky;
+  float: right;
   background: #eaeef2;
   border: 1px solid #ccc;
   border-radius: 6px;
   padding: 4px 8px;
-  font-size: 12px;
+  font-size: 10px;
   font-family: inherit;
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.2s;
+  z-index: 1; /* ensure it stays above code */
 }
 
 pre .copy-btn:hover {
