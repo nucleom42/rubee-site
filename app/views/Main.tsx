@@ -22,15 +22,16 @@ export default function Main() {
         <div className="features">
           <div className="feature">
             <h3>Fast by default</h3>
-            <p>Fiber-based async system with minimal overhead.</p>
+            <p>A minimal footprint focused on serving Ruby applications efficiently</p>
           </div>
           <div className="feature">
-            <h3>Minimal yet Powerful</h3>
-            <p>No configuration, just conventions and speed.</p>
+            <h3>Modular</h3>
+            <p> A modular approach to application development. Build modular monoliths with ease by attaching
+as many subprojects as you need.</p>
           </div>
           <div className="feature">
-            <h3>React-friendly</h3>
-            <p>First-class React rendering support via ERB or JSX.</p>
+            <h3>React-ready</h3>
+            <p>React is inbuilt in Rubee, making it easy to build modern web applications</p>
           </div>
         </div>
       </main>

@@ -10,7 +10,7 @@ export default function Header(props) {
     <header>
       <nav className="navbar">
         <div className="nav-group">
-          <Link to="/#why">Why Rubee?</Link>
+          <Link to="/sections/3/documents">How to RUBEE</Link>
           <Link to="/docs">Docs</Link>
         </div>
         <div className="logo">
