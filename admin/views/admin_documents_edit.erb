@@ -17,11 +17,13 @@
       />
     </div>
 
+
     <div class="detail">
       <label for="content"><strong>Content:</strong></label>
-      <input id="content" type="hidden" name="document[content]" value="<%= @document.content %>">
+      <input id="content" type="hidden" name="document[content]" value="<%= ERB::Util.html_escape(@document.content.to_s) %>">
       <trix-editor input="content"></trix-editor>
     </div>
+
 
     <div class="detail">
       <label for="section"><strong>Section:</strong></label>
