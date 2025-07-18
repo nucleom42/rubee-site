@@ -98,11 +98,14 @@ footer {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: center; /* center whole navbar group */
+  justify-content: center; /* space out left/logo/right */
   background: var(--accent);
   padding: 0.75rem 1.5rem;
   font-weight: bold;
-  flex-wrap: wrap; /* needed for mobile wrapping */
+  flex-wrap: nowrap; /* prevent wrap */
+  overflow-x: auto; /* allow scroll if it overflows */
+  white-space: nowrap;
+  gap: 1rem; /* needed for mobile wrapping */
 }
 
 .nav-group {
@@ -136,8 +139,7 @@ footer {
 
 @media (max-width: 640px) {
   .navbar {
-    flex-direction: column;
-    padding: 1rem;
+    font-size: clamp(0.75rem, 2vw, 1rem);
   }
 
   .nav-group {
