@@ -34,13 +34,13 @@ class Admin::DocumentsController < Rubee::BaseController
         .limit(3)
         .all
 
-      documents_by_description = Admin::Document
+      documents_by_content = Admin::Document
         .dataset
-        .where(Sequel.ilike(:description, "%#{query}%"))
+        .where(Sequel.ilike(:content, "%#{query}%"))
         .limit(3)
         .all
 
-      documents = (documents_by_title + documents_by_description).uniq
+      documents = (documents_by_title + documents_by_content).uniq
 
       response_with(object: documents, type: :json)
     end
