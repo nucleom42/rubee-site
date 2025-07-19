@@ -31,6 +31,7 @@ jobs:
               git fetch origin
               git reset --hard origin/main
               git clean -fd  # remove untracked files and folders
+              git push
 
               # Restore the database
               cp ~/production.db.bak db/production.db || echo 'No backup found to restore'
