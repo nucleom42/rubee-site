@@ -33,7 +33,7 @@ jobs:
               git clean -fd  # remove untracked files and folders
 
               # Restore the database
-              mv ~/production.db.bak db/production.db || echo 'No backup found to restore'
+              cp ~/production.db.bak db/production.db || echo 'No backup found to restore'
               # Deploy
               chmod +x ./deploy.sh
               ./deploy.sh
