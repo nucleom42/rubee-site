@@ -22,6 +22,23 @@ class Admin::DocumentsController < Rubee::BaseController
     response_with(object: @documents, type: :json)
   end
 
+  # GET /api/documents/search/{q}
+  def search
+    query = params[:query].to_s.strip
+    if query.empty?
+      response_with(object: [], type: :json)
+    else
+      documents = Admin::Document
+        .dataset
+        .where(Sequel.ilike(:title, "%#{query}%"))
+        .or(Sequel.ilike(:content, "%#{query}%"))
+        .limit(20)
+        .all
+
+      response_with(object: documents, type: :json)
+    end
+  end
+
   # GET /admin/documents/new
   def new
     @sections = Admin::Section.all

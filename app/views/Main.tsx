@@ -1,11 +1,13 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import SearchResults from "./SearchResults";
 
 export default function Main() {
   return (
     <>
       <Header />
+      <SearchResults />
       <main>
         <section className="video-section">
           <iframe

@@ -217,3 +217,74 @@ pre .copy-btn:hover {
   height: 30px;
   vertical-align: middle;
 }
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  gap: 0.5rem;
+  max-width: 600px;
+  padding: 0 1rem;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-bar input[type="text"]:focus {
+  border-color: #fbbf24; /* amber-400 like Tailwind */
+}
+
+.search-bar button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  background-color: #fbbf24;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: #f59e0b;
+}
+
+.search-results {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.search-results ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-results li {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+  color: #1d4ed8;
+}
+
+.search-results li:hover {
+  text-decoration: underline;
+}
+
+.search-results a {
+  text-decoration: none; /* blue-700 */
+  font-weight: 500;
+}
+
+.search-results a:hover {
+  text-decoration: underline;
+}

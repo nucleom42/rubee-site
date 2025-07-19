@@ -1,11 +1,9 @@
 
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
-export default function Header(props) {
-  const { title } = props;
+export default function Header({ title }) {
   const navigate = useNavigate();
-
   return (
     <header>
       <nav className="navbar">
@@ -13,14 +11,18 @@ export default function Header(props) {
           <Link to="/sections/3/documents">How to RUBEE</Link>
           <Link to="/docs">Docs</Link>
         </div>
+
         <div className="logo">
           <Link to="/"><img src="/images/rubee.svg" alt="rubee" /></Link>
         </div>
+
         <div className="nav-group">
           <a href="https://github.com/nucleom42/rubee/discussions">Community</a>
           <a href="https://github.com/nucleom42/rubee">GitHub</a>
         </div>
       </nav>
+
+
 
       <div className="hero">
         <h1>Rubee</h1>
@@ -35,6 +37,8 @@ export default function Header(props) {
           </p>
         )}
       </div>
+
+
     </header>
   );
 }
