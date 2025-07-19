@@ -25,15 +25,22 @@ class Admin::DocumentsController < Rubee::BaseController
   # GET /api/documents/search/{q}
   def search
     query = params[:query].to_s.strip
-    if query.empty?
+    if query.length < 3
       response_with(object: [], type: :json)
     else
-      documents = Admin::Document
+      documents_by_title = Admin::Document
         .dataset
         .where(Sequel.ilike(:title, "%#{query}%"))
-        .or(Sequel.ilike(:content, "%#{query}%"))
-        .limit(20)
+        .limit(3)
         .all
+
+      documents_by_description = Admin::Document
+        .dataset
+        .where(Sequel.ilike(:description, "%#{query}%"))
+        .limit(3)
+        .all
+
+      documents = (documents_by_title + documents_by_description).uniq
 
       response_with(object: documents, type: :json)
     end
