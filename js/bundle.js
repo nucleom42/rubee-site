@@ -278,7 +278,7 @@ pre .copy-btn:hover {
 
 .search-results li {
   margin-bottom: 1rem;
-  padding: 0.75rem 1rem;
+  padding: 0 1rem;
   border: none;
   border-radius: 0.5rem;
   transition: background-color 0.2s;
