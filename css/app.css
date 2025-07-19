@@ -288,3 +288,26 @@ pre .copy-btn:hover {
 .search-results a:hover {
   text-decoration: underline;
 }
+
+.hero button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #f3f4f6; /* light gray */
+  border: 1px solid #d1d5db; /* neutral border */
+  border-radius: 0.375rem; /* rounded corners */
+  color: #111827; /* dark text */
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.hero button:hover {
+  background-color: #e5e7eb; /* darker gray on hover */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.hero button:active {
+  background-color: #d1d5db;
+}
