@@ -31,6 +31,7 @@ jobs:
               # Avoid tracking changes to ignored files if they exist
               [ -f db/production.db ] && git update-index --assume-unchanged db/production.db || echo 'Skipping db/production.db'
               [ -f db/structure.rb ] && git update-index --assume-unchanged db/structure.rb || echo 'Skipping db/structure.rb'
+              [ -d node_modules ] && git update-index --assume-unchanged node_modules || echo 'Skipping node_modules'
 
               # Stash local changes
               git stash --include-untracked
