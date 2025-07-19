@@ -27,4 +27,4 @@ rubee stop || true
 RACK_ENV=production WEB_CONCURRENCY=3 rubee start > /dev/null 2>&1 &
 
 log "done"
-og "done"
+log "done"
