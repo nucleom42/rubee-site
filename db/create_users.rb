@@ -11,6 +11,6 @@ class CreateUsers
       index(:email)
     end
 
-    User.create(email: 'ok@ok.com', password: 'password')
+    User.create(email: 'ok@ok.com', password: 'password') if User.where(email: 'ok@ok.com').empty?
   end
 end
