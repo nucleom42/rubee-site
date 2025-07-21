@@ -1,28 +1,38 @@
 
 import React, { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Header({ title }) {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header>
       <nav className="navbar">
-        <div className="nav-group">
-          <Link to="/sections/3/documents">How to RUBEE</Link>
-          <Link to="/docs">Docs</Link>
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          ☰
+        </button>
+
+        <div className={`nav-group ${menuOpen ? "open" : ""}`}>
+          <Link to="/sections/3/documents" onClick={() => setMenuOpen(false)}>
+            How to RUBEE
+          </Link>
+          <Link to="/docs" onClick={() => setMenuOpen(false)}>Docs</Link>
         </div>
 
         <div className="logo">
           <Link to="/"><img src="/images/rubee.svg" alt="rubee" /></Link>
         </div>
 
-        <div className="nav-group">
-          <a href="https://github.com/nucleom42/rubee/discussions">Community</a>
-          <a href="https://github.com/nucleom42/rubee">GitHub</a>
+        <div className={`nav-group ${menuOpen ? "open" : ""}`}>
+          <a href="https://github.com/nucleom42/rubee/discussions" onClick={() => setMenuOpen(false)}>Community</a>
+          <a href="https://github.com/nucleom42/rubee" onClick={() => setMenuOpen(false)}>GitHub</a>
         </div>
       </nav>
-
-
 
       <div className="hero">
         <h1>Rubee</h1>
@@ -37,8 +47,6 @@ export default function Header({ title }) {
           </p>
         )}
       </div>
-
-
     </header>
   );
 }

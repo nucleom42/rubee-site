@@ -137,24 +137,6 @@ footer {
   height: auto;
 }
 
-@media (max-width: 640px) {
-  .navbar {
-    font-size: clamp(0.75rem, 2vw, 1rem);
-  }
-
-  .nav-group {
-    justify-content: center;
-    flex: 1 1 100%;
-    margin: 0.25rem 0;
-  }
-
-  .logo {
-    order: 0;
-    flex: 0 0 auto;
-    margin: 0.25rem 0;
-  }
-}
-
 .hero {
   padding: 2rem 1rem;
   text-align: center;
@@ -310,4 +292,50 @@ pre .copy-btn:hover {
 
 .hero button:active {
   background-color: #d1d5db;
+}
+
+/* Hamburger Button */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+/* Collapse nav-group by default on small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-group {
+    display: none;
+    flex-direction: column;
+    background-color: var(--accent);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .nav-group.open {
+    display: flex;
+    margin-top: 110px;
+    gap: 1rem;
+  }
+
+  .hero {
+    z-index: 1;
+  }
+
+  .navbar {
+    justify-content: space-between;
+    position: relative;
+  }
 }

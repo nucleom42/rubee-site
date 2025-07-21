@@ -17,6 +17,7 @@ class Admin::DocumentsController < Rubee::BaseController
   end
 
   def index_json
+    binding.pry
     section_id = params[:section_id]
     @documents = Admin::Document.where(admin_section_id: section_id)
     response_with(object: @documents, type: :json)
