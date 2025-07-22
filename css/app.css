@@ -330,6 +330,8 @@ pre .copy-btn:hover {
     margin-top: 60px;
     z-index: 1000;
     overflow-y: auto;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .nav-group.open {

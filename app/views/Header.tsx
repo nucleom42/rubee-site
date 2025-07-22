@@ -13,7 +13,7 @@ export default function Header({ title }) {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          {menuOpen ? "✖" : "☰"}
+          {menuOpen ? "-" : "☰"}
         </button>
 
         <div className={`nav-group ${menuOpen ? "open" : ""}`}>
