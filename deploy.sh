@@ -24,7 +24,7 @@ RACK_ENV=production rubee db run:all
 
 log "restarting rubee server"
 rubee stop || true
-RACK_ENV=production WEB_CONCURRENCY=3 rubee start > /dev/null 2>&1 &
+RACK_ENV=production WEB_CONCURRENCY=4 rubee start > /dev/null 2>&1 &
 
 log "done"
 log "done"

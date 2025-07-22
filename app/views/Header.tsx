@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -14,23 +13,18 @@ export default function Header({ title }) {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          ☰
+          {menuOpen ? "✖" : "☰"}
         </button>
 
         <div className={`nav-group ${menuOpen ? "open" : ""}`}>
-          <Link to="/sections/3/documents" onClick={() => setMenuOpen(false)}>
-            How to RUBEE
-          </Link>
+          <Link to="/sections/3/documents" onClick={() => setMenuOpen(false)}>How to RUBEE</Link>
           <Link to="/docs" onClick={() => setMenuOpen(false)}>Docs</Link>
+          <a href="https://github.com/nucleom42/rubee/discussions" onClick={() => setMenuOpen(false)}>Community</a>
+          <a href="https://github.com/nucleom42/rubee" onClick={() => setMenuOpen(false)}>GitHub</a>
         </div>
 
         <div className="logo">
           <Link to="/"><img src="/images/rubee.svg" alt="rubee" /></Link>
-        </div>
-
-        <div className={`nav-group ${menuOpen ? "open" : ""}`}>
-          <a href="https://github.com/nucleom42/rubee/discussions" onClick={() => setMenuOpen(false)}>Community</a>
-          <a href="https://github.com/nucleom42/rubee" onClick={() => setMenuOpen(false)}>GitHub</a>
         </div>
       </nav>
 
@@ -50,4 +44,3 @@ export default function Header({ title }) {
     </header>
   );
 }
-

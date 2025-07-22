@@ -306,9 +306,16 @@ pre .copy-btn:hover {
 }
 
 /* Collapse nav-group by default on small screens */
+
 @media (max-width: 768px) {
   .hamburger {
     display: block;
+    z-index: 1100;
+  }
+
+  .navbar {
+    justify-content: space-between;
+    position: relative;
   }
 
   .nav-group {
@@ -320,22 +327,22 @@ pre .copy-btn:hover {
     left: 0;
     right: 0;
     padding: 1rem;
+    margin-top: 60px;
     z-index: 1000;
     overflow-y: auto;
   }
 
   .nav-group.open {
     display: flex;
-    margin-top: 110px;
     gap: 1rem;
   }
 
   .hero {
+    position: relative;
     z-index: 1;
   }
 
-  .navbar {
-    justify-content: space-between;
-    position: relative;
+  .logo {
+    z-index: 900;
   }
 }
