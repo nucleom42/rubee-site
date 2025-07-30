@@ -8,7 +8,7 @@ export default function Header({ title }) {
   useEffect(() => {
     const titleElement = document.getElementById("title-content");
     if (titleElement) {
-      document.title = titleElement.textContent || "RUBEE - a minimalistic Ruby application server";
+      document.title = `Rubee - ${titleElement.textContent || "a minimalistic Ruby application server"}`;
     }
   }, [title]);
 
