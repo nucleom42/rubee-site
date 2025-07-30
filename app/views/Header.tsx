@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Header({ title }) {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const titleElement = document.getElementById("title-content");
+    if (titleElement) {
+      document.title = titleElement.textContent || "RUBEE - a minimalistic Ruby application server";
+    }
+  }, [title]);
+
   return (
     <header>
+      <div hidden id="title-content">{title}</div>
       <nav className="navbar">
         <button
           className="hamburger"
