@@ -25,7 +25,7 @@ export default function Header({ title }) {
         </button>
 
         <div className={`nav-group ${menuOpen ? "open" : ""}`}>
-          <Link to="/sections/3/documents" onClick={() => setMenuOpen(false)}>How to RUBEE</Link>
+          <Link to="/sections/2/documents" onClick={() => setMenuOpen(false)}>How to Rubee</Link>
           <Link to="/docs" onClick={() => setMenuOpen(false)}>Docs</Link>
           <a href="https://github.com/nucleom42/rubee/discussions" onClick={() => setMenuOpen(false)}>Community</a>
           <a href="https://github.com/nucleom42/rubee" onClick={() => setMenuOpen(false)}>GitHub</a>
