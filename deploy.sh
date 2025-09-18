@@ -26,6 +26,9 @@ else
   log "Node.js $(node -v) and npm $(npm -v) already installed"
 fi
 
+# --- Remove Gemfile.lock ---
+rm Gemfile.lock
+
 # --- Ruby dependencies ---
 log "bundle install --redownload"
 bundle install --redownload
