@@ -34,6 +34,9 @@ bundle install --redownload
 log "preparing rubee with react"
 RACK_ENV=production rubee react prepare
 
+# --- ES build ---
+RACK_ENV=production rubee react build
+
 # --- Database migrations ---
 log "migrations"
 RACK_ENV=production rubee db run:all
