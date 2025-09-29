@@ -20,9 +20,9 @@
           <td><%= document.id %></td>
           <td><%= document.title %></td>
           <td><%= document.content[..15] %> ..</td>
+          <td><a href="<%= "/admin/sections/#{document.admin_section_id}" %>"><%= document.section.title %></a></td>
           <td><%= document.created %></td>
           <td><%= document.updated %></td>
-          <td><a href="<%= "/admin/sections/#{document.admin_section_id}" %>"><%= document.section.title %></a></td>
           <td>
             <a href="<%= "/admin/documents/#{document.id}" %>" class="action-link">Show</a>
             <a href="<%= "/admin/documents/#{document.id}/edit" %>" class="action-link">Edit</a>
