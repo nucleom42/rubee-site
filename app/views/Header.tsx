@@ -45,7 +45,7 @@ export default function Header({ title }) {
           </>
         ) : (
           <p>
-            Fast and lightweight Ruby application server designed for minimalism and flexibility.
+            Fast and lightweight Ruby web framework designed for minimalism and flexibility.
           </p>
         )}
       </div>
