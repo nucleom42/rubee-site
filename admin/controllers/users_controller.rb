@@ -45,9 +45,9 @@ class Admin::UsersController < Rubee::BaseController
       user = User.new(email: user_info['email'], password: SecureRandom.hex)
       user.save
     end
-
-    params['email'] = user_info['email']
-    params['password'] = user.password
+    Rubee::Logger.debug(object: user)
+    params[:email] = user_info['email']
+    params[:password] = user.password
 
     if authentificate! # AuthTokenable method that init @token_header
       Rubee::Logger.info(message: "Successful Outh login for user #{@authentificated_user.email}")
