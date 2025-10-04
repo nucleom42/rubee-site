@@ -2,7 +2,7 @@ class Admin::UsersController < Rubee::BaseController
   include Rubee::AuthTokenable
 
   REDIRECT_URI = 'https://rubee.dedyn.io/admin/users/outh_callback'
-  CLIENT_ID = ENV['GOOGLE_CLIENT_ID'] || "227996144711-mack4ama9k4sej51dm07bem8f3ookl2j.apps.googleusercontent.com"
+  CLIENT_ID = ENV['GOOGLE_CLIENT_ID']
   CLIENT_SECRET = ENV['GOOGLE_CLIENT_SECRET'] || "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"
 
   # GET /login (login form page)
