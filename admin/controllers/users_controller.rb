@@ -3,7 +3,7 @@ class Admin::UsersController < Rubee::BaseController
 
   REDIRECT_URI = 'https://rubee.dedyn.io/admin/users/outh_callback'
   CLIENT_ID = ENV['GOOGLE_CLIENT_ID']
-  CLIENT_SECRET = ENV['GOOGLE_CLIENT_SECRET'] || "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"
+  CLIENT_SECRET = ENV['GOOGLE_CLIENT_SECRET']
 
   # GET /login (login form page)
   def edit
