@@ -213,6 +213,16 @@ textarea {
   width: 100%;
 }
 
+.btn-google-login {
+  background-color: #4285f4; /* Blue-500 */
+  color: white;
+  width: 100%;
+}
+
+.btn-google-login:hover {
+  background-color: #3367d6; /* Blue-600 */
+}
+
 .btn-login:hover {
   background-color: #0ea5e9; /* Sky-600 */
 }

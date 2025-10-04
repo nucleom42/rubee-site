@@ -13,6 +13,10 @@
     </div>
 
     <button type="submit" class="btn btn-login">Login</button>
+
+  </form>
+  <form action="/admin/users/outh_login" method="GET" class="auth-form">
+    <button type="submit" class="btn btn-google-login">Google Login</button>
   </form>
 
   <div class="<%= @error ? 'error' : 'note' %>"><%= @error || "Access restricted to authorized admins." %></div>

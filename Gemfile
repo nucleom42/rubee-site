@@ -13,6 +13,7 @@ gem 'pry-byebug'
 gem 'puma'
 gem 'json'
 gem 'jwt'
+gem 'oauth2'
 
 group :development do
   gem 'rerun'

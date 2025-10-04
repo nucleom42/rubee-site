@@ -2,7 +2,9 @@ Rubee::Router.draw do |router|
   # Login page
   router.get('/login', to: 'users#edit', namespace: :admin)
   router.post('/admin/users/login', to: 'users#login', namespace: :admin)
+  router.get('/admin/users/outh_login', to: 'users#outh_login', namespace: :admin)
   router.post('/admin/users/logout', to: 'users#logout', namespace: :admin)
+  router.get('/admin/users/outh_callback', to: 'users#outh_callback', namespace: :admin)
 
   # Sections admin
   router.get('/admin/sections', to: 'sections#index',
