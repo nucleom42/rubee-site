@@ -60,6 +60,10 @@ class Admin::UsersController < Rubee::BaseController
     Rubee::Logger.error(message: "OAuth error: #{e.response.body}")
     @error = "OAuth login failed"
     response_with(render_view: "admin_users_edit")
+  rescue StandardError => e
+    Rubee::Logger.error(message: "Standard error: #{e.message}")
+    @error = "Something went wrong"
+    response_with(render_view: "admin_users_edit")
   end
 
   # POST /admin/users/logout (logout logic)
