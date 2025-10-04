@@ -28,7 +28,7 @@ class Admin::UsersController < Rubee::BaseController
       type: :redirect,
       to: auth_client.auth_code.authorize_url(
         redirect_uri: REDIRECT_URI,
-        scope: 'email profile'
+        scope: 'email profile openid'
       )
     )
   end
@@ -56,6 +56,10 @@ class Admin::UsersController < Rubee::BaseController
       @error = "Something went wrong"
       response_with(render_view: "admin_users_edit")
     end
+  rescue OAuth2::Error => e
+    Rubee::Logger.error(message: "OAuth error: #{e.response.body}")
+    @error = "OAuth login failed"
+    response_with(render_view: "admin_users_edit")
   end
 
   # POST /admin/users/logout (logout logic)
@@ -72,8 +76,8 @@ class Admin::UsersController < Rubee::BaseController
       CLIENT_ID,
       CLIENT_SECRET,
       site: 'https://accounts.google.com',
-      authorize_url: '/o/oauth2/v2/auth',
-      token_url: '/oauth2/v4/token'
+      authorize_url: '/o/oauth2/auth',
+      token_url: 'https://oauth2.googleapis.com/token'
     )
   end
 end
