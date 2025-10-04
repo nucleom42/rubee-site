@@ -40,9 +40,9 @@ class Admin::UsersController < Rubee::BaseController
     user_info = JSON.parse(token.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json').body)
     Rubee::Logger.debug(object: user_info, method: "outh_callback", class: "UsersController")
 
-    user = Admin::User.where(email: user_info['email'])&.last
+    user = User.where(email: user_info['email'])&.last
     unless user
-      user = Admin::User.new(email: user_info['email'], password: SecureRandom.hex)
+      user = User.new(email: user_info['email'], password: SecureRandom.hex)
       user.save
     end
 
