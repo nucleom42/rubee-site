@@ -46,8 +46,7 @@ RACK_ENV=production rubee db run:all
 
 # --- Restart Rubee server ---
 log "restarting rubee server"
-# rubee stop || true
+rubee stop || true
 RACK_ENV=production WEB_CONCURRENCY=4 rubee start > log/production.log 2>&1 &
-
 
 log "done"
