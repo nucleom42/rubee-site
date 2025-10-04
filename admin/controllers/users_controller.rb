@@ -42,10 +42,9 @@ class Admin::UsersController < Rubee::BaseController
 
     user = User.where(email: user_info['email'])&.last
     unless user
-      user = User.new(email: user_info['email'], password: SecureRandom.hex)
-      user.save
+      raise "User with email #{user_info['email']} not found"
     end
-    Rubee::Logger.debug(object: user)
+
     params[:email] = user_info['email']
     params[:password] = user.password
 
@@ -57,11 +56,9 @@ class Admin::UsersController < Rubee::BaseController
       response_with(render_view: "admin_users_edit")
     end
   rescue OAuth2::Error => e
-    Rubee::Logger.error(message: "OAuth error: #{e.response.body}")
     @error = "OAuth login failed"
     response_with(render_view: "admin_users_edit")
   rescue StandardError => e
-    Rubee::Logger.error(message: "Standard error: #{e.message}")
     @error = "Something went wrong"
     response_with(render_view: "admin_users_edit")
   end
