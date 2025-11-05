@@ -51,6 +51,6 @@ rubee stop || true
 rm -rf log/
 mkdir -p log
 touch log/production.log
-RACK_ENV=production WEB_CONCURRENCY=4 rubee start > log/production.log 2>&1 &
+RACK_ENV=production GOOGLE_CLIENT_ID="$GOOGLE_CLIENT_ID" GOOGLE_CLIENT_SECRET="$GOOGLE_CLIENT_SECRET" WEB_CONCURRENCY=4 rubee start > log/production.log 2>&1 &
 
 log "done"
