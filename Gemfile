@@ -14,7 +14,7 @@ gem 'puma'
 gem 'json'
 gem 'jwt'
 gem 'oauth2'
-
+# dev gems
 group :development do
   gem 'rerun'
   gem 'minitest'
