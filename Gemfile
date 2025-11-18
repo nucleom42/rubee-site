@@ -14,6 +14,8 @@ gem 'puma'
 gem 'json'
 gem 'jwt'
 gem 'oauth2'
+gem 'redis'
+gem 'websocket'
 # dev gems
 group :development do
   gem 'rerun'

@@ -26,6 +26,20 @@ else
   log "Node.js $(node -v) and npm $(npm -v) already installed"
 fi
 
+# --- Redis installation ---
+if ! command -v redis-server >/dev/null 2>&1; then
+  log "Redis not found. Installing..."
+  sudo apt-get install -y redis
+
+  # Ensure Redis is enabled & running
+  sudo systemctl enable redis-server
+  sudo systemctl start redis-server
+
+  log "Installed Redis $(redis-server --version)"
+else
+  log "Redis already installed: $(redis-server --version)"
+fi
+
 # --- Remove Gemfile.lock ---
 rm Gemfile.lock
 
