@@ -396,6 +396,10 @@ pre .copy-btn:hover {
   color: var(--text, #000);
 }
 
+.news-feed a {
+  float: right;
+}
+
 /* Title */
 .news-feed h3 {
   margin: 0 0 0.8rem 0;
