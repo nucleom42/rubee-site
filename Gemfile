@@ -13,7 +13,7 @@ gem 'pry-byebug'
 gem 'puma'
 gem 'json'
 gem 'jwt'
-gem 'oauth2'
+gem 'oauth2', '~> 2.0'
 gem 'redis'
 gem 'websocket'
 # dev gems
