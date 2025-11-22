@@ -467,3 +467,12 @@ pre .copy-btn:hover {
   margin-left: 1rem;
   white-space: nowrap;
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .news-feed {
+    width: 90vw; /* or 100vw if you want full screen */
+    right: 10px; /* small margin */
+    left: 10px; /* center it */
+  }
+}
