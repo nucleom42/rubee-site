@@ -397,7 +397,8 @@ pre .copy-btn:hover {
 }
 
 .news-feed a {
-  float: right;
+  display: block;
+  text-align: right;
 }
 
 /* Title */
