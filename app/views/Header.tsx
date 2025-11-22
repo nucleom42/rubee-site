@@ -68,7 +68,7 @@ export default function Header({ title }) {
                 {news.slice(-3).map((item) => (
                   <li key={item.id}>
                     <Link to={`/documents/${item.id}`}>{item.title}</Link>
-                    <span className="news-date">{new Date(item.published_at).toLocaleDateString()}</span>
+                    <span className="news-date">{new Date(item.created).toLocaleDateString()}</span>
                   </li>
                 ))}
               </ul>
