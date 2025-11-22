@@ -356,7 +356,8 @@ pre .copy-btn:hover {
   top: 350px;
   right: 0;
 
-  width: 220px;
+  width: 23vw;
+  max-width: calc(100vw - 20px);
   max-height: 70vh;
   overflow-y: auto;
 
@@ -368,16 +369,13 @@ pre .copy-btn:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 
   padding: 0.8rem 1rem;
-  padding-top: 2.2rem; /* space for X button */
+  padding-top: 2.2rem;
 
-  transition:
-    width 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 /* --- Close Button --- */
 .news-close {
-  margin-top: 0.3rem;
   position: absolute;
   top: 6px;
   right: 10px;
@@ -396,12 +394,6 @@ pre .copy-btn:hover {
 
 .news-close:hover {
   color: var(--text, #000);
-}
-
-/* Expand on hover */
-.news-feed:hover {
-  width: 600px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
 }
 
 /* Title */
