@@ -353,7 +353,7 @@ pre .copy-btn:hover {
 
 .news-feed {
   position: fixed;
-  top: 350px;
+  top: 5vw;
   right: 0;
 
   width: 23vw;
