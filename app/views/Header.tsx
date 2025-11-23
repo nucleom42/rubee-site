@@ -6,15 +6,6 @@ export default function Header({ title }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [news, setNews] = useState([]);
   const [newsOpen, setNewsOpen] = useState(true);
-  const formatDate = (dateString) => {
-    const d = new Date(dateString.replace(" ", "T"));
-    if (isNaN(d)) return ""; // fallback instead of "Invalid Date"
-
-    return d.getFullYear() + "/" +
-      String(d.getMonth() + 1).padStart(2, "0") + "/" +
-      String(d.getDate()).padStart(2, "0");
-  }
-
   useEffect(() => {
     const titleElement = document.getElementById("title-content");
     if (titleElement) {
@@ -25,9 +16,9 @@ export default function Header({ title }) {
   useEffect(() => {
     if (title) return;
     // Fetch news documents from the "news" section
-    fetch("/api/sections/3/documents")
+    fetch("/api/sections/9/documents")
       .then((res) => res.json())
-      .then((data) => setNews(data))
+      .then((data) => setNews(data)).then(() => console.log(data))
       .catch((err) => console.error("Failed to fetch news:", err));
   }, [setNews, title]);
 
@@ -76,7 +67,10 @@ export default function Header({ title }) {
                 {news.slice(-3).map((item) => (
                   <li key={item.id}>
                     <Link to={`/documents/${item.id}`}>{item.title}</Link>
-                    <span className="news-date">{formatDate(item.created)}</span>
+                    <span className="news-date">{new Date(
+                      item?.created?.replace(" ", "T")?.replace(" -", "-")
+                    )?.toLocaleDateString()
+                    }</span>
                   </li>
                 ))}
               </ul>
