@@ -6,6 +6,14 @@ export default function Header({ title }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [news, setNews] = useState([]);
   const [newsOpen, setNewsOpen] = useState(true);
+  const formatDate = (dateString) => {
+    const d = new Date(dateString.replace(" ", "T"));
+    if (isNaN(d)) return ""; // fallback instead of "Invalid Date"
+
+    return d.getFullYear() + "/" +
+      String(d.getMonth() + 1).padStart(2, "0") + "/" +
+      String(d.getDate()).padStart(2, "0");
+  }
 
   useEffect(() => {
     const titleElement = document.getElementById("title-content");
@@ -68,7 +76,7 @@ export default function Header({ title }) {
                 {news.slice(-3).map((item) => (
                   <li key={item.id}>
                     <Link to={`/documents/${item.id}`}>{item.title}</Link>
-                    <span className="news-date">{new Date(item.created.replace(" ", "T")).toLocaleDateString()}</span>
+                    <span className="news-date">{formatDate(item.created)}</span>
                   </li>
                 ))}
               </ul>
