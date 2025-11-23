@@ -16,7 +16,7 @@ export default function Header({ title }) {
   useEffect(() => {
     if (title) return;
     // Fetch news documents from the "news" section
-    fetch("/api/sections/9/documents")
+    fetch("/api/sections/3/documents")
       .then((res) => res.json())
       .then((data) => setNews(data))
       .catch((err) => console.error("Failed to fetch news:", err));
