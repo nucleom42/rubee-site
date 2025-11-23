@@ -18,7 +18,7 @@ export default function Header({ title }) {
     // Fetch news documents from the "news" section
     fetch("/api/sections/9/documents")
       .then((res) => res.json())
-      .then((data) => setNews(data)).then(() => console.log(data))
+      .then((data) => setNews(data))
       .catch((err) => console.error("Failed to fetch news:", err));
   }, [setNews, title]);
 
