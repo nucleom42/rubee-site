@@ -64,7 +64,7 @@ export default function Header({ title }) {
             <h3>ru.Bee news</h3>
             {news.length > 0 ? (
               <ul>
-                {news.slice(0, 3).map((item) => (
+                {news.sort((a, b) => b.id - a.id).slice(-3).map((item) => (
                   <li key={item.id}>
                     <Link to={`/documents/${item.id}`}>{item.title}</Link>
                     <span className="news-date">{item?.created?.slice(0, 10) || "---"}</span>
