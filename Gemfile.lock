@@ -68,7 +68,7 @@ GEM
       connection_pool
     rerun (0.14.0)
       listen (~> 3.0)
-    ru.Bee (2.2.1)
+    ru.Bee (2.2.2)
       bundler (~> 2.1, >= 2.1.4)
     sequel (5.99.0)
       bigdecimal
