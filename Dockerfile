@@ -1,4 +1,4 @@
-# Use an official Ruby runtime as a parent image
+# Use an official Ruby runtime as a parent image go
 FROM docker.io/library/ruby:3.4.1
 
 # Set the working directory inside the container
