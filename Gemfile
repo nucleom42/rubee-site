@@ -16,7 +16,7 @@ gem 'jwt'
 gem 'oauth2', '~> 2.0'
 gem 'redis'
 gem 'websocket'
-# dev gems
+# dev gems com
 group :development do
   gem 'rerun'
   gem 'minitest'
